@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "source": {
+    "repository": "https://github.com/openai/grade-school-math",
+    "commit": "3101c7d5072418e28b9008a6636bde82a006892c",
+    "raw_sha256": {
+      "train.jsonl": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+      "test.jsonl": "3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14"
+    }
+  },
+  "raw_counts": {
+    "train": 7473,
+    "test": 1319
+  },
+  "parsed_valid_counts": {
+    "train": 7473,
+    "test": 1319
+  },
+  "invalid_records": {
+    "train": [],
+    "test": []
+  },
+  "excluded_from_train_pool": {
+    "total": 0,
+    "by_reason": {},
+    "records": []
+  },
+  "test_internal_duplicate_groups": [],
+  "processed_counts": {
+    "train": 6726,
+    "validation": 747,
+    "test": 1319,
+    "train_small": 500,
+    "validation_small": 100,
+    "test_small": 200
+  },
+  "answer_formats": {
+    "train_raw": {
+      "has_thousands_separator": 79,
+      "integer_value": 7473,
+      "negative": 3
+    },
+    "test_raw": {
+      "has_thousands_separator": 14,
+      "integer_value": 1319,
+      "negative": 2
+    }
+  },
+  "overlap_checks": {
+    "exact_normalized_text_overlap_after_split": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "near_duplicates": {
+      "method": "word 3-gram Jaccard >= 0.8, candidates share a word 5-gram. Report only, nothing removed.",
+      "test_vs_train_and_validation": {
+        "count": 0,
+        "pairs": []
+      },
+      "validation_vs_train": {
+        "count": 0,
+        "pairs": []
+      }
+    },
+    "shared_templates_numbers_masked": {
+      "method": "same as near_duplicates but every integer token replaced by <num>; detects the same problem template with different numbers. These are different problems (different answers in most cases) and are NOT removed; reported for transparency about template-level similarity.",
+      "test_vs_train_and_validation": {
+        "count": 2,
+        "pairs": [
+          {
+            "query_id": "gsm8k-test-00602",
+            "corpus_id": "gsm8k-train-01314",
+            "jaccard": 0.84,
+            "same_final_answer": false
+          },
+          {
+            "query_id": "gsm8k-test-00602",
+            "corpus_id": "gsm8k-train-05162",
+            "jaccard": 0.84,
+            "same_final_answer": false
+          }
+        ]
+      },
+      "validation_vs_train": {
+        "count": 1,
+        "pairs": [
+          {
+            "query_id": "gsm8k-train-05419",
+            "corpus_id": "gsm8k-train-04997",
+            "jaccard": 0.8182,
+            "same_final_answer": false
+          }
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Questions and reference solutions are stored verbatim (no translation, no edits).",
+    "No difficulty labels or categories are added; GSM8K does not provide them.",
+    "RL trajectories / rewards are not part of GSM8K; they will be generated in phase 2."
+  ]
+}

@@ -1,0 +1,22 @@
+[gen] split=validation problems=747 cached=176 todo=571
+W1117 02:48:41.636000 60568 .venv\Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   3%|3         | 10/290 [00:00<00:03, 87.00it/s]Loading weights:   7%|6         | 19/290 [00:00<00:05, 53.79it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 873.62it/s]
+[gen] model: {'model_id': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'dtype': 'bfloat16', 'torch': '2.9.1+cu126', 'transformers': '5.23.0', 'gpu': 'NVIDIA GeForce RTX 4050 Laptop GPU'}
+[gen] 32/571 problems  44s  (1.38s/problem)
+[gen] 64/571 problems  84s  (1.31s/problem)
+[gen] 96/571 problems  128s  (1.34s/problem)
+[gen] 128/571 problems  174s  (1.36s/problem)
+[gen] 160/571 problems  218s  (1.36s/problem)
+[gen] 192/571 problems  266s  (1.39s/problem)
+[gen] 224/571 problems  312s  (1.39s/problem)
+[gen] 256/571 problems  359s  (1.40s/problem)
+[gen] 288/571 problems  403s  (1.40s/problem)
+[gen] 320/571 problems  449s  (1.40s/problem)
+[gen] 352/571 problems  495s  (1.41s/problem)
+[gen] 384/571 problems  542s  (1.41s/problem)
+[gen] 416/571 problems  586s  (1.41s/problem)
+[gen] 448/571 problems  634s  (1.42s/problem)
+[gen] 480/571 problems  682s  (1.42s/problem)
+[gen] 512/571 problems  729s  (1.42s/problem)
+[gen] 544/571 problems  775s  (1.42s/problem)
+[gen] 571/571 problems  819s  (1.43s/problem)

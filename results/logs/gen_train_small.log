@@ -1,0 +1,68 @@
+[gen] split=train_small problems=500 cached=0 todo=500
+W1117 02:22:02.490000 32216 .venv\Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   4%|3         | 11/290 [00:00<00:03, 89.01it/s]Loading weights:  14%|#4        | 41/290 [00:00<00:01, 201.37it/s]Loading weights:  22%|##1       | 63/290 [00:00<00:01, 204.86it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 872.30it/s]
+[gen] model: {'model_id': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'dtype': 'bfloat16', 'torch': '2.9.1+cu126', 'transformers': '5.23.0', 'gpu': 'NVIDIA GeForce RTX 4050 Laptop GPU'}
+[gen] 16/500 problems  27s  (1.66s/problem)
+[gen] 32/500 problems  59s  (1.83s/problem)
+[gen] 48/500 problems  84s  (1.75s/problem)
+[gen] 64/500 problems  115s  (1.80s/problem)
+[gen] 80/500 problems  169s  (2.11s/problem)
+[gen] 96/500 problems  221s  (2.30s/problem)
+[gen] 112/500 problems  281s  (2.51s/problem)
+[gen] 128/500 problems  335s  (2.62s/problem)
+[gen] 144/500 problems  398s  (2.76s/problem)
+[gen] 160/500 problems  448s  (2.80s/problem)
+[gen] 176/500 problems  508s  (2.89s/problem)
+[gen] 192/500 problems  562s  (2.93s/problem)
+[gen] 208/500 problems  623s  (3.00s/problem)
+[gen] 224/500 problems  684s  (3.05s/problem)
+Traceback (most recent call last):
+  File "C:\Users\EGY SKY\Desktop\RL_Project\scripts\generate_attempts.py", line 136, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\scripts\generate_attempts.py", line 106, in main
+    pots = solver.generate([pot_messages(q) for _, q in chunk], params=GREEDY_PARAMS,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\src\solver\qwen_solver.py", line 83, in generate
+    out = self.model.generate(**enc, max_new_tokens=max_new_tokens, num_return_sequences=num_return_sequences,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\.venv\Lib\site-packages\transformers\generation\utils.py", line 3007, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\.venv\Lib\site-packages\transformers\generation\utils.py", line 3288, in _sample
+    this_peer_finished = stop_check(unfinished_sequences, next_tokens, input_ids.shape[1])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EGY SKY\Desktop\RL_Project\.venv\Lib\site-packages\transformers\generation\utils.py", line 395, in __call__
+    return bool(unfinished_sequences.max() == 0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[gen] split=train_small problems=500 cached=224 todo=276
+W1117 02:38:15.045000 18636 .venv\Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   1%|1         | 3/290 [00:00<00:10, 27.75it/s]Loading weights:   2%|2         | 7/290 [00:00<00:08, 32.56it/s]Loading weights:   4%|3         | 11/290 [00:00<00:10, 25.61it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 643.91it/s]
+[gen] model: {'model_id': 'Qwen/Qwen2.5-0.5B-Instruct', 'revision': '7ae557604adf67be50417f59c2c2f167def9a775', 'device': 'cuda', 'dtype': 'bfloat16', 'torch': '2.9.1+cu126', 'transformers': '5.23.0', 'gpu': 'NVIDIA GeForce RTX 4050 Laptop GPU'}
+[gen] 16/276 problems  35s  (2.21s/problem)
+[gen] 32/276 problems  66s  (2.07s/problem)
+[gen] 48/276 problems  100s  (2.08s/problem)
+[gen] 64/276 problems  135s  (2.11s/problem)
+[gen] 80/276 problems  172s  (2.15s/problem)
+[gen] 96/276 problems  205s  (2.13s/problem)
+[gen] 112/276 problems  237s  (2.12s/problem)
+[gen] 128/276 problems  272s  (2.12s/problem)
+[gen] 144/276 problems  308s  (2.14s/problem)
+[gen] 160/276 problems  339s  (2.12s/problem)
+[gen] 176/276 problems  375s  (2.13s/problem)
+[gen] 192/276 problems  410s  (2.13s/problem)
+[gen] 208/276 problems  443s  (2.13s/problem)
+[gen] 224/276 problems  479s  (2.14s/problem)
+[gen] 240/276 problems  515s  (2.15s/problem)
+[gen] 256/276 problems  554s  (2.16s/problem)
+[gen] 272/276 problems  592s  (2.18s/problem)
+[gen] 276/276 problems  619s  (2.24s/problem)

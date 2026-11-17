@@ -1,0 +1,15 @@
+{
+  "_note": "Documentation of the settings used by the code (src/config.py, src/solver/qwen_solver.py, src/environment/reward.py, scripts/train_coordinator.py). Change the code, then this file.",
+  "model": {"id": "Qwen/Qwen2.5-0.5B-Instruct", "revision": "7ae557604adf67be50417f59c2c2f167def9a775", "dtype": "bfloat16", "weights": "frozen"},
+  "prompts": {"solver": "solver-v1", "pot": "pot-v1", "system": "model-card default system prompt"},
+  "decoding": {
+    "attempt_0": {"do_sample": false, "repetition_penalty": 1.0},
+    "attempts_1_to_3": {"do_sample": true, "temperature": 0.7, "top_p": 0.8, "top_k": 20, "repetition_penalty": 1.1, "source": "official generation_config.json"},
+    "pot": {"do_sample": false},
+    "max_input_tokens": 512, "max_new_tokens_solver": 512, "max_new_tokens_pot": 320
+  },
+  "environment": {"max_attempts": 4, "verify_more_per_episode": 1, "max_steps": 5, "actions": ["ACCEPT", "REGENERATE", "VERIFY_MORE"]},
+  "reward": {"correct": 1.0, "incorrect": -1.0, "no_answer": -1.0, "regenerate_cost": 0.05, "verify_cost": 0.03},
+  "q_learning": {"gamma": 1.0, "epsilon_start": 1.0, "grid": {"alpha": [0.05, 0.1, 0.2], "episodes": [10000, 30000, 100000], "epsilon_end": [0.05, 0.2]}, "grid_seeds": 3, "final_seeds": 5, "selection": "validation mean return"},
+  "data": {"train": "train_small (500)", "validation_for_selection": "validation (full, 747)", "test_primary": "test_small (200, pre-registered subset)", "test_extended": "test (full, 1319)", "seed": 42, "decided": "2026-11-17 02:30, after measuring generation speed on train, before any validation/test generation"}
+}

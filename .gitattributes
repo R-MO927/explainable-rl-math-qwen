@@ -1,0 +1,3 @@
+# Store every file byte-for-byte (no line-ending conversion), so SHA-256 hashes in
+# data manifests and results/eval/FROZEN_BEFORE_TEST.json stay valid after clone.
+* -text

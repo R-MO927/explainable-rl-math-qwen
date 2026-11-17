@@ -1,0 +1,14 @@
+A_single_attempt   acc=0.480 [0.412,0.549] attempts=1.00 pot=0.00 calls=1.00 out_tok=305 return=-0.040
+B_fixed_rule       acc=0.535 [0.466,0.603] attempts=2.50 pot=1.00 calls=3.50 out_tok=921 return=-0.035
+C_rl               acc=0.490 [0.422,0.559] attempts=1.24 pot=0.10 calls=1.34 out_tok=400 return=-0.035
+ref_max_budget     acc=0.530 [0.461,0.598] attempts=4.00 pot=1.00 calls=5.00 out_tok=1334 return=-0.120
+C_rl_seed0         acc=0.540 [0.471,0.608] attempts=3.55 pot=0.97 calls=4.52 out_tok=1209 return=-0.077
+C_rl_seed1         acc=0.490 [0.422,0.559] attempts=1.24 pot=0.10 calls=1.34 out_tok=400 return=-0.035
+C_rl_seed2         acc=0.530 [0.461,0.598] attempts=2.63 pot=0.99 calls=3.62 out_tok=958 return=-0.051
+C_rl_seed3         acc=0.515 [0.446,0.583] attempts=3.67 pot=0.74 calls=4.42 out_tok=1208 return=-0.126
+C_rl_seed4         acc=0.490 [0.422,0.559] attempts=1.18 pot=0.14 calls=1.31 out_tok=385 return=-0.033
+B_fixed_rule - A_single_attempt    diff=+0.055 CI95=[+0.020,+0.095] McNemar p=0.007
+C_rl - A_single_attempt            diff=+0.010 CI95=[+0.000,+0.025] McNemar p=0.500
+C_rl - B_fixed_rule                diff=-0.045 CI95=[-0.080,-0.010] McNemar p=0.022
+ref_max_budget - C_rl              diff=+0.040 CI95=[+0.005,+0.080] McNemar p=0.077
+ref_max_budget - B_fixed_rule      diff=-0.005 CI95=[-0.025,+0.015] McNemar p=1.000

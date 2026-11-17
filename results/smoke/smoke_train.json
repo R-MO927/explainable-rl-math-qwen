@@ -1,0 +1,545 @@
+{
+ "summary": {
+  "n": 20,
+  "greedy_accuracy": 0.55,
+  "greedy_extractable": 0.8,
+  "greedy_truncated": 0.2,
+  "pot_ok": 0.75,
+  "pot_accuracy": 0.4,
+  "sampled_text_differs_from_greedy_rate": 0.525,
+  "mean_out_tokens": 342.15,
+  "max_gpu_mem_gb": 1.2675156593322754,
+  "model": {
+   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+   "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+   "device": "cuda",
+   "dtype": "bfloat16",
+   "torch": "2.9.1+cu126",
+   "transformers": "5.23.0",
+   "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+  },
+  "note": "train_small only; sanity check of the pipeline, not an evaluation."
+ },
+ "rows": [
+  {
+   "id": "gsm8k-train-00005",
+   "reference": "35",
+   "greedy_answer": "49",
+   "extraction": "boxed",
+   "greedy_correct": false,
+   "truncated": false,
+   "arith": [
+    6,
+    0
+   ],
+   "sampled_answers": [
+    "49",
+    "35"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    true
+   ],
+   "pot_answer": "35",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 324,
+   "greedy_text": "To determine the total number of flowers in Mark's garden, we need to follow these steps:\n\n1. **Calculate the number of purple flowers:**\n   - Mark planted 10 yellow flowers.\n   - There are 80% more purple flowers than yellow flowers.\n   - To find the number of purple flowers, we calculate 80% of 10:\n     \\[\n     0.80 \\times 10 = 8\n     \\]\n   - Therefore, the number of purple flowers is:\n     \\[\n     10 + 8 = 18\n     \\]\n\n2. **Calculate the number of green flowers:**\n   - There are 25% as many green flowers as there are yellow and purple flowers combined.\n   - First, find the total number of yellow and purple flowers:\n     \\[\n     10 + 18 = 28\n     \\]\n   - Then, calculate 25% of 28:\n     \\[\n     0.25 \\times 28 = 7\n     \\]\n   - Therefore, the number of green flowers is:\n     \\[\n     28 - 7 = 21\n     \\]\n\n3. **Calculate the total number of flowers:**\n   - Add the number of yellow, purple, and green flowers:\n     \\[\n     10 + 18 + 21 = 49\n     \\]\n\nThus, the total number of flowers in Mark's garden is \\(\\boxed{49}\\).",
+   "pot_text": "```python\n# Calculate the number of purple flowers\npurple_flowers = 10 + 0.8 * 10\n\n# Calculate the number of green flowers\ngreen_flowers = 0.25 * (10 + purple_flowers)\n\n# Calculate the total number of flowers\ntotal_flowers = 10 + purple_flowers + green_flowers\n\n# Print the total number of flowers\nprint(total_flowers)\n```"
+  },
+  {
+   "id": "gsm8k-train-00046",
+   "reference": "1920",
+   "greedy_answer": "1920",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    5,
+    0
+   ],
+   "sampled_answers": [
+    "1920",
+    "1520"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    true
+   ],
+   "pot_answer": "1920",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 413,
+   "greedy_text": "To determine how many minutes Carolyn spends practicing in a month, we need to follow these steps:\n\n1. Calculate the time Carolyn spends practicing the violin each day.\n2. Calculate the total time Carolyn spends practicing the piano each day.\n3. Calculate the total time Carolyn spends practicing the violin each day.\n4. Calculate the total time Carolyn spends practicing the piano each day.\n5. Calculate the total time Carolyn spends practicing each week.\n6. Calculate the total time Carolyn spends practicing in a month.\n\nLet's start with the first step:\n\n1. Carolyn practices the piano for 20 minutes a day.\n2. Carolyn practices the violin for three times as long as she practices the piano. Therefore, the time she spends practicing the violin each day is:\n   \\[\n   3 \\times 20 = 60 \\text{ minutes}\n   \\]\n3. Carolyn practices the piano for 6 days a week. Therefore, the total time she spends practicing the piano each week is:\n   \\[\n   6 \\times 20 = 120 \\text{ minutes}\n   \\]\n4. Carolyn practices the violin for 6 days a week. Therefore, the total time she spends practicing the violin each week is:\n   \\[\n   6 \\times 60 = 360 \\text{ minutes}\n   \\]\n5. The total time Carolyn spends practicing each day is the sum of the time she spends practicing the piano and the violin:\n   \\[\n   120 + 360 = 480 \\text{ minutes}\n   \\]\n6. Since Carolyn practices the piano and the violin for 6 days a week, the total time she spends practicing in a month (which has 4 weeks) is:\n   \\[\n   480 \\times 4 = 1920 \\text{ minutes}\n   \\]\n\nTherefore, the total time Carolyn spends practicing in a month is \\(\\boxed{1920}\\) minutes.",
+   "pot_text": "```python\n# Calculate the total time Carolyn spends practicing in a week\npiano_time_per_day = 20\nviolin_time_per_day = 3 * piano_time_per_day\ntotal_piano_time_per_week = piano_time_per_day * 6\ntotal_violin_time_per_week = violin_time_per_day * 6\ntotal_time_per_week = total_piano_time_per_week + total_violin_time_per_week\n\n# Calculate the total time Carolyn spends practicing in a month with four weeks\ntotal_time_per_month = total_time_per_week * 4\n\n# Output the final numeric result\nanswer = total_time_per_month\n```"
+  },
+  {
+   "id": "gsm8k-train-00074",
+   "reference": "28",
+   "greedy_answer": "28",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    4,
+    0
+   ],
+   "sampled_answers": [
+    "28",
+    "28"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": "28",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 344,
+   "greedy_text": "To determine how many kilograms each of the last two people lost, we will follow these steps:\n\n1. **Calculate the weight loss of the second person:**\n   The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person.\n   \\[\n   \\text{Weight loss of the second person} = 27 - 7 = 20 \\text{ kilograms}\n   \\]\n\n2. **Calculate the total weight loss of the first two people:**\n   The first person lost 27 kilograms and the second person lost 20 kilograms.\n   \\[\n   \\text{Total weight loss of the first two people} = 27 + 20 = 47 \\text{ kilograms}\n   \\]\n\n3. **Calculate the weight loss of the last two people:**\n   The total weight loss of all four people is 103 kilograms. Subtract the weight loss of the first two people from the total weight loss.\n   \\[\n   \\text{Weight loss of the last two people} = 103 - 47 = 56 \\text{ kilograms}\n   \\]\n\n4. **Determine the weight loss of each of the last two people:**\n   Since the two remaining people lost the same amount, we divide the total weight loss of the last two people by 2.\n   \\[\n   \\text{Weight loss of each of the last two people} = \\frac{56}{2} = 28 \\text{ kilograms}\n   \\]\n\nThus, the weight loss of each of the last two people is \\(\\boxed{28}\\) kilograms.",
+   "pot_text": "```python\n# calculate the weight loss of the second person\nsecond_person_loss = 27 - 7\n\n# calculate the total weight loss of the first and second person\nfirst_and_second_person_loss = 27 + second_person_loss\n\n# calculate the weight loss of the last two people\nlast_two_persons_loss = (103 - first_and_second_person_loss) / 2\n\n# print the result\nprint(last_two_persons_loss)\n```"
+  },
+  {
+   "id": "gsm8k-train-00098",
+   "reference": "45",
+   "greedy_answer": null,
+   "extraction": "none",
+   "greedy_correct": false,
+   "truncated": true,
+   "arith": [
+    3,
+    0
+   ],
+   "sampled_answers": [
+    null,
+    null
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": null,
+   "pot_status": "unsupported_statement:ImportFrom",
+   "pot_correct": false,
+   "out_tokens": 512,
+   "greedy_text": "To determine the total number of gumballs Hector purchased, we need to work backwards from the information given. Let's denote the number of gumballs Hector gave to Todd as \\( T \\), to Alisha as \\( A \\), and to Bobby as \\( B \\).\n\n1. **Initial Gumballs:**\n   Hector had 6 gumballs remaining after giving some to Todd, Alisha, and Bobby. Therefore, the total number of gumballs Hector initially had is:\n   \\[\n   T + A + B + 6\n   \\]\n\n2. **Gumballs Given to Todd:**\n   Hector gave 4 gumballs to Todd. So, the number of gumballs left after giving to Todd is:\n   \\[\n   T + A + B + 6 - 4 = T + A + B + 2\n   \\]\n\n3. **Gumballs Given to Alisha:**\n   Hector gave twice as many gumballs to Alisha as he had given to Todd. Since he gave 4 gumballs to Todd, he gave:\n   \\[\n   2 \\times 4 = 8 \\text{ gumballs to Alisha}\n   \\]\n   So, the number of gumballs left after giving to Alisha is:\n   \\[\n   T + A + B + 2 - 8 = T + A + B - 6\n   \\]\n\n4. **Gumballs Given to Bobby:**\n   Hector gave 5 less than four times as many gumballs to Bobby as he had given to Alisha. Since he gave 8 gumballs to Alisha, he gave:\n   \\[\n   4 \\times 8 - 5 = 32 - 5 = 27 \\text{ gumballs to Bobby}\n   \\]\n   So, the number of gumballs left after giving to Bobby is:\n   \\[\n   T + A + B - 6 - 27 = T + A + B - 33\n   \\]\n\n5. **Total Number of Gumballs:**\n   We know that the total number of gumballs Hector initially had is equal to the total number of gumballs he gave away. Therefore, we can set up the following equation:\n   \\[\n   T + A + B + 6 = T + A + B - 33\n   \\]\n",
+   "pot_text": "```python\n# Let's denote the number of gumballs Hector gave to Todd as x.\n# Then, he gave twice as many as he had given Todd to Alisha as 2x.\n# Finally, he gave 5 less than four times as many to Bobby as he had given to Alisha as 4(2x) - 5.\n\n# Let's denote the total number of gumballs Hector purchased as y.\n# We know that after giving away all the gumballs, Hector had 6 gumballs remaining.\n# So, we can write the equation: y - x - 2x - (4(2x) - 5) = 6\n\n# Let's solve this equation to find the value of y.\n# First, let's simplify the equation:\n# y - 3x - 8x + 5 = 6\n# y - 11x + 5 = 6\n# y = 6 + 11x - 5\n# y = 11x + 1\n\n# Now, let's write the Python code to solve this equation.\n# We'll use the sympy library to solve the equation.\nfrom sympy import symbols, Eq, solve\n\nx = symbols('x')\ny = 11*x + 1\n\n# Solve the equation\nsolution = solve(Eq(y, 6 + 11*x - 5), x)\ntotal_gumballs = y.subs(x, solution[0])\n\n# Print the total number"
+  },
+  {
+   "id": "gsm8k-train-00103",
+   "reference": "258",
+   "greedy_answer": "804",
+   "extraction": "boxed",
+   "greedy_correct": false,
+   "truncated": false,
+   "arith": [
+    3,
+    0
+   ],
+   "sampled_answers": [
+    "596",
+    "278"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "218",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 263,
+   "greedy_text": "To determine how many sentences Janice started with today, we need to calculate the total number of sentences she typed and erased, and then add the number of sentences she typed today.\n\nFirst, let's calculate the total number of sentences Janice typed today. She typed for 20 minutes, took a break, and then typed for 18 more minutes. The total time she spent typing today is:\n\\[ 20 + 18 = 38 \\text{ minutes} \\]\n\nSince she types 6 sentences per minute, the total number of sentences she typed today is:\n\\[ 38 \\times 6 = 228 \\text{ sentences} \\]\n\nNext, let's calculate the total number of sentences she erased. She erased 40 sentences, so the total number of sentences she erased is:\n\\[ 40 \\text{ sentences} \\]\n\nNow, let's add the sentences she typed today, the sentences she erased, and the sentences she had left to find out how many sentences she started with:\n\\[ 228 + 40 + 536 = 804 \\text{ sentences} \\]\n\nTherefore, the number of sentences Janice started with today is:\n\\[ \\boxed{804} \\]",
+   "pot_text": "```python\n# Janice's typing speed in sentences per minute\ntyping_speed = 6\n\n# Total sentences typed today\ntotal_sentences_typed = 536\n\n# Time Janice typed today\ntime_typed = 20 + 15 + 18\n\n# Calculate the total sentences typed today\ntotal_sentences_typed_today = typing_speed * time_typed\n\n# Calculate the sentences Janice started with today\nsentences_started_with_today = total_sentences_typed - total_sentences_typed_today\n\n# Output the result\nprint(sentences_started_with_today)\n```"
+  },
+  {
+   "id": "gsm8k-train-00105",
+   "reference": "320",
+   "greedy_answer": "320",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    2,
+    0
+   ],
+   "sampled_answers": [
+    "320",
+    "320"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": null,
+   "pot_status": "unsupported_statement:Expr",
+   "pot_correct": false,
+   "out_tokens": 199,
+   "greedy_text": "To determine the total number of goats that Paddington and Washington have, we need to follow these steps:\n\n1. Identify the number of goats Washington has.\n2. Calculate the number of goats Paddington has.\n3. Add the number of goats Washington and Paddington have together.\n\nStep 1: Identify the number of goats Washington has.\nWashington has 140 goats.\n\nStep 2: Calculate the number of goats Paddington has.\nPaddington has 40 more goats than Washington. Therefore, we add 40 to the number of goats Washington has:\n\\[ 140 + 40 = 180 \\]\nSo, Paddington has 180 goats.\n\nStep 3: Add the number of goats Washington and Paddington have together.\n\\[ 140 + 180 = 320 \\]\n\nThus, the total number of goats that Paddington and Washington have is \\(\\boxed{320}\\).",
+   "pot_text": "```python\n# number of goats Washington has\ngoats_washington = 140\n\n# number of goats Paddington has\ngoats_paddington = goats_washington + 40\n\n# total number of goats\ntotal_goats = goats_washington + goats_paddington\n\n# output the total number of goats\ntotal_goats\n```"
+  },
+  {
+   "id": "gsm8k-train-00124",
+   "reference": "18",
+   "greedy_answer": null,
+   "extraction": "none",
+   "greedy_correct": false,
+   "truncated": true,
+   "arith": [
+    0,
+    0
+   ],
+   "sampled_answers": [
+    "18",
+    "18"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "9",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 512,
+   "greedy_text": "To determine how many feet of yarn Joy used for the second ball, we need to follow these steps:\n\n1. **Identify the size of the third ball:**\n   The problem states that the third ball is three times as large as the first ball. Let's denote the size of the first ball as \\( x \\) feet. Therefore, the size of the third ball is \\( 3x \\) feet.\n\n2. **Determine the size of the second ball:**\n   The problem also states that the first ball is half the size of the second ball. Let's denote the size of the second ball as \\( y \\) feet. Therefore, the size of the first ball is \\( 2y \\) feet. Since we know the size of the third ball is \\( 3x \\) feet, we can set up the equation:\n   \\[\n   3x = 2y\n   \\]\n\n3. **Solve for \\( y \\):**\n   To find the size of the second ball, we need to solve the equation \\( 3x = 2y \\). We can rearrange this equation to express \\( y \\) in terms of \\( x \\):\n   \\[\n   y = \\frac{3x}{2}\n   \\]\n\n4. **Determine the total amount of yarn used:**\n   The total amount of yarn used is the sum of the yarn used for the first, second, and third balls. We know the size of the third ball is 27 feet, so we can write:\n   \\[\n   27 = 3x + y + 27\n   \\]\n   Simplifying this equation, we get:\n   \\[\n   0 = 3x + y\n   \\]\n   Since \\( y = \\frac{3x}{2} \\), we substitute \\( y \\) in the equation:\n   \\[\n   0 = 3x + \\frac{3x}{2}\n   \\]\n   To solve for \\( x \\), we first find a common denominator for the terms on the right side:\n   \\[\n   0 = \\frac{6x}{2} + \\frac{3x}{2}\n   \\]\n   Combining the terms on the right side, we get:\n   \\[\n   0 = \\frac{9x}{2}\n   \\]\n   Since \\( x \\) cannot be zero (as it would imply the size of the first ball is",
+   "pot_text": "```python\n# Let's denote the number of feet of yarn used for the first ball as x.\n# According to the problem, the first ball is half the size of the second ball, so the second ball is 2x.\n# The third ball is three times as large as the first ball, so the third ball is 3x.\n# We are given that the third ball used 27 feet of yarn, so we can set up the equation:\n# 3x = 27\n# Solving for x gives us the number of feet of yarn used for the first ball.\n# Let's calculate this using Python.\nx = 27 / 3\nanswer = x\n```"
+  },
+  {
+   "id": "gsm8k-train-00127",
+   "reference": "55",
+   "greedy_answer": "55",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    6,
+    0
+   ],
+   "sampled_answers": [
+    "55",
+    "55"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": "55",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 233,
+   "greedy_text": "To determine the combined total number of meows the three cats make in 5 minutes, we need to calculate the meows each cat makes in that time and then sum them up.\n\n1. **First Cat:**\n   - Meows per minute: 3\n   - Total meows in 5 minutes: \\( 3 \\times 5 = 15 \\)\n\n2. **Second Cat:**\n   - Meows per minute: \\( 2 \\times 3 = 6 \\)\n   - Total meows in 5 minutes: \\( 6 \\times 5 = 30 \\)\n\n3. **Third Cat:**\n   - Meows per minute: \\( \\frac{6}{3} = 2 \\)\n   - Total meows in 5 minutes: \\( 2 \\times 5 = 10 \\)\n\nNow, we sum the meows of all three cats:\n\\[ 15 + 30 + 10 = 55 \\]\n\nThus, the combined total number of meows the three cats make in 5 minutes is \\(\\boxed{55}\\).",
+   "pot_text": "```python\n# Calculate the number of meows each cat makes in 5 minutes\ncat1_meows = 3 * 5\ncat2_meows = 2 * cat1_meows\ncat3_meows = cat2_meows / 3\n\n# Calculate the total number of meows\ntotal_meows = cat1_meows + cat2_meows + cat3_meows\n\n# Print the total number of meows\nprint(total_meows)\n```"
+  },
+  {
+   "id": "gsm8k-train-00138",
+   "reference": "8",
+   "greedy_answer": "3",
+   "extraction": "boxed",
+   "greedy_correct": false,
+   "truncated": false,
+   "arith": [
+    7,
+    0
+   ],
+   "sampled_answers": [
+    "1",
+    "4"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "6",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 372,
+   "greedy_text": "To determine the total savings from buying 3 gallons of whole milk and 5 boxes of cereal, we need to calculate the total cost without any discounts and then compare it to the total cost with the discounts applied.\n\n1. **Calculate the cost of 3 gallons of whole milk without any discount:**\n   - The normal price of a gallon of whole milk is $3.\n   - The cost of 3 gallons is \\(3 \\times 3 = 9\\) dollars.\n\n2. **Calculate the cost of 5 boxes of cereal with the discount:**\n   - The normal price of a box of cereal is $1.\n   - The discount on each box of cereal is $1.\n   - The cost of 5 boxes is \\(5 \\times 1 = 5\\) dollars.\n\n3. **Calculate the total cost without any discounts:**\n   - The total cost without any discounts is the sum of the cost of the milk and the cost of the cereal: \\(9 + 5 = 14\\) dollars.\n\n4. **Calculate the total cost with the discounts applied:**\n   - The cost of 3 gallons of whole milk with the discount is \\(3 \\times 2 = 6\\) dollars.\n   - The cost of 5 boxes of cereal with the discount is \\(5 \\times 1 = 5\\) dollars.\n   - The total cost with the discounts is \\(6 + 5 = 11\\) dollars.\n\n5. **Calculate the total savings:**\n   - The total savings is the difference between the total cost without any discounts and the total cost with the discounts: \\(14 - 11 = 3\\) dollars.\n\nTherefore, the total savings from buying 3 gallons of whole milk and 5 boxes of cereal is \\(\\boxed{3}\\) dollars.",
+   "pot_text": "```python\n# Calculate the savings\nsavings = 3 - 2 + 1 * 5\n\n# Output the savings\nprint(savings)\n```"
+  },
+  {
+   "id": "gsm8k-train-00151",
+   "reference": "283",
+   "greedy_answer": "283",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    3,
+    0
+   ],
+   "sampled_answers": [
+    "283",
+    "283"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": null,
+   "pot_status": "unsupported_statement:Expr",
+   "pot_correct": false,
+   "out_tokens": 235,
+   "greedy_text": "To determine the total number of text messages Keiko sent last week and this week combined, we need to follow these steps:\n\n1. **Identify the number of text messages sent last week:**\n   Keiko sent 111 text messages last week.\n\n2. **Calculate the number of text messages sent this week:**\n   This week, Keiko sent 50 less than double what she sent last week.\n   - Double the number of messages sent last week: \\( 2 \\times 111 = 222 \\)\n   - Subtract 50 from this amount: \\( 222 - 50 = 172 \\)\n\n3. **Calculate the total number of text messages sent last week and this week combined:**\n   - Total for last week: 111\n   - Total for this week: 172\n   - Add these two amounts together: \\( 111 + 172 = 283 \\)\n\nTherefore, the total number of text messages Keiko sent last week and this week combined is \\(\\boxed{283}\\).",
+   "pot_text": "```python\n# Calculate the number of text messages sent this week\nthis_week = 2 * 111 - 50\n\n# Calculate the total number of text messages sent last week and this week combined\ntotal = 111 + this_week\n\n# Output the total number of text messages\ntotal\n```"
+  },
+  {
+   "id": "gsm8k-train-00153",
+   "reference": "135",
+   "greedy_answer": "135",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    4,
+    0
+   ],
+   "sampled_answers": [
+    "120",
+    "345"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "210",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 345,
+   "greedy_text": "To determine how much Tim paid for his visit to the doctor, we need to follow these steps:\n\n1. **Calculate the amount covered by insurance:**\n   - Tim's doctor's visit cost $300.\n   - Insurance covered 75% of the cost.\n   - Calculate 75% of $300:\n     \\[\n     0.75 \\times 300 = 225\n     \\]\n   - Insurance covered $225.\n\n2. **Calculate the amount Tim paid for his doctor's visit:**\n   - The cost of the doctor's visit was $300.\n   - Insurance covered $225.\n   - Calculate the remaining amount Tim paid:\n     \\[\n     300 - 225 = 75\n     \\]\n   - Tim paid $75 for his doctor's visit.\n\n3. **Calculate the amount covered by insurance for the cat's visit:**\n   - Tim's cat's visit cost $120.\n   - Insurance covered $60.\n   - Calculate the remaining amount Tim paid:\n     \\[\n     120 - 60 = 60\n     \\]\n   - Tim paid $60 for his cat's visit.\n\n4. **Calculate the total amount Tim paid:**\n   - Tim paid $75 for his doctor's visit.\n   - Tim paid $60 for his cat's visit.\n   - Add these amounts together:\n     \\[\n     75 + 60 = 135\n     \\]\n\nTherefore, the total amount Tim paid is \\(\\boxed{135}\\).",
+   "pot_text": "```python\n# calculate the total cost of Tim's doctor's visit\ntotal_cost_tim = 300\n\n# calculate the total cost of Tim's cat's visit\ntotal_cost_cat = 120\n\n# calculate the total cost of Tim's visit\ntotal_cost_tim_cat = total_cost_tim + total_cost_cat\n\n# calculate the total cost of Tim's insurance\ntotal_cost_insurance = 300 * (1 - 0.75)\n\n# calculate the total cost of Tim's insurance\ntotal_cost_insurance_tim = total_cost_insurance + 60\n\n# calculate the total cost of Tim\ntotal_cost_tim = total_cost_insurance_tim + total_cost_insurance\n\n# calculate the final cost\nfinal_cost = total_cost_tim\n\n# print the final cost\nprint(final_cost)\n```"
+  },
+  {
+   "id": "gsm8k-train-00158",
+   "reference": "6",
+   "greedy_answer": "6",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    2,
+    0
+   ],
+   "sampled_answers": [
+    "1/2",
+    "6"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    false
+   ],
+   "pot_answer": "0",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 244,
+   "greedy_text": "To determine how long Jerome will ride on the 13th day to finish his 150-mile bicycle trip, we need to follow these steps:\n\n1. **Calculate the total number of miles Jerome needs to ride in 13 days:**\n   Jerome wants to ride 12 miles each day for 13 days.\n   \\[\n   12 \\text{ miles/day} \\times 13 \\text{ days} = 156 \\text{ miles}\n   \\]\n\n2. **Determine the remaining miles Jerome needs to ride:**\n   Jerome's total goal is 150 miles, and he has already ridden 156 miles.\n   \\[\n   150 \\text{ miles} - 156 \\text{ miles} = -6 \\text{ miles}\n   \\]\n   Since he has already ridden more miles than his goal, he will not finish his trip on the 13th day. Instead, he will need to ride an additional 6 miles to reach his goal.\n\nTherefore, the number of miles Jerome will ride on the 13th day is \\(\\boxed{6}\\).",
+   "pot_text": "```python\n# Calculate the total distance Jerome needs to ride on the 13th day\ntotal_distance = 150 - 12 * 12\n\n# Calculate the distance Jerome will ride on the 13th day\ndistance_13th_day = total_distance / 13\n\n# Round the result to the nearest whole number\ndistance_13th_day_rounded = round(distance_13th_day)\n\n# Print the result\nprint(distance_13th_day_rounded)\n```"
+  },
+  {
+   "id": "gsm8k-train-00159",
+   "reference": "27",
+   "greedy_answer": "27",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    1,
+    0
+   ],
+   "sampled_answers": [
+    "36/5",
+    "27"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    false
+   ],
+   "pot_answer": "27",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 230,
+   "greedy_text": "To determine how much Mario would have paid for his haircut the day before, we need to follow these steps:\n\n1. **Identify the cost of the haircut on Monday:**\n   Mario paid $18 for his haircut on Monday.\n\n2. **Determine the increase in cost due to the weekend:**\n   The problem states that the haircut is 50% more expensive during the weekends. This means the cost on weekends is 150% of the cost on weekdays.\n\n3. **Calculate the cost on weekends:**\n   To find the cost on weekends, we multiply the weekday price by 1.5 (since 150% is equivalent to 1.5 in decimal form):\n   \\[\n   \\text{Cost on weekends} = 18 \\times 1.5 = 27\n   \\]\n\n4. **Determine the cost on the day before:**\n   The cost on the day before is the same as the cost on weekends, which is $27.\n\nTherefore, the amount Mario would have paid the day before is \\(\\boxed{27}\\).",
+   "pot_text": "```python\n# Calculate the price of the haircut on the day before\nprice_on_monday = 18\nprice_on_tuesday = price_on_monday * 1.5\n\n# Output the result\nprint(price_on_tuesday)\n```"
+  },
+  {
+   "id": "gsm8k-train-00162",
+   "reference": "2290",
+   "greedy_answer": null,
+   "extraction": "none",
+   "greedy_correct": false,
+   "truncated": true,
+   "arith": [
+    6,
+    0
+   ],
+   "sampled_answers": [
+    "2131",
+    "2290"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "1918",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 512,
+   "greedy_text": "To determine how much Daniel spent on all the games in his collection, we need to break down the problem into smaller steps and calculate the cost for each group of games.\n\n1. **Calculate the number of games bought for $12 each:**\n   Daniel bought 80 games for $12 each.\n   \\[\n   \\text{Number of games for $12 each} = 80\n   \\]\n\n2. **Calculate the number of games bought for $7 each:**\n   The total number of games is 346, and 80 of them are bought for $12 each. Therefore, the number of games bought for $7 each is:\n   \\[\n   \\text{Number of games for $7 each} = 346 - 80 = 266\n   \\]\n\n3. **Calculate the number of games bought for $3 each:**\n   The number of games bought for $3 each is 50% of the total number of games. So, we calculate:\n   \\[\n   \\text{Number of games for $3 each} = 0.5 \\times 346 = 173\n   \\]\n\n4. **Calculate the total cost for the games bought for $12 each:**\n   The total cost for the games bought for $12 each is:\n   \\[\n   \\text{Total cost for $12 each} = 80 \\times 12 = 960\n   \\]\n\n5. **Calculate the total cost for the games bought for $7 each:**\n   The total cost for the games bought for $7 each is:\n   \\[\n   \\text{Total cost for $7 each} = 266 \\times 7 = 1862\n   \\]\n\n6. **Calculate the total cost for the games bought for $3 each:**\n   The total cost for the games bought for $3 each is:\n   \\[\n   \\text{Total cost for $3 each} = 173 \\times 3 = 519\n   \\]\n\n7. **Calculate the total amount spent by Daniel:**\n   The total amount spent by Daniel is the sum of the costs for each group of games:\n   \\[\n   \\text{Total amount spent} = 960 + 1862 + 519 = 3341\n   \\]\n\n",
+   "pot_text": "```python\n# Calculate the total cost of the games Daniel bought\ntotal_games = 346\ngames_bought_for_12 = 80\ngames_bought_for_7 = (100 - 50) / 100 * games_bought_for_12\ngames_bought_for_3 = total_games - games_bought_for_12 - games_bought_for_7\n\n# Calculate the total cost of the games Daniel bought\ntotal_cost = (games_bought_for_12 * 12) + (games_bought_for_7 * 7) + (games_bought_for_3 * 3)\n\n# Print the total cost\nprint(total_cost)\n```"
+  },
+  {
+   "id": "gsm8k-train-00171",
+   "reference": "24",
+   "greedy_answer": "48",
+   "extraction": "boxed",
+   "greedy_correct": false,
+   "truncated": false,
+   "arith": [
+    3,
+    0
+   ],
+   "sampled_answers": [
+    "12",
+    "2"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "24",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 248,
+   "greedy_text": "To determine how many trees James planted, we need to follow these steps:\n\n1. Calculate the total number of plants from both trees.\n2. Determine how many of those plants he plants.\n3. Calculate the number of trees he planted.\n\n**Step 1: Calculate the total number of plants.**\n\nEach tree has 20 plants, and there are 2 trees.\n\\[\n20 \\text{ plants/tree} \\times 2 \\text{ trees} = 40 \\text{ plants}\n\\]\n\n**Step 2: Determine how many of those plants he plants.**\n\nJames plants 60% of the plants.\n\\[\n60\\% \\text{ of } 40 \\text{ plants} = 0.60 \\times 40 = 24 \\text{ plants}\n\\]\n\n**Step 3: Calculate the number of trees he planted.**\n\nEach plant has 1 seed, and he plants 24 seeds.\n\\[\n24 \\text{ seeds/plant} \\times 2 \\text{ trees} = 48 \\text{ trees}\n\\]\n\nTherefore, the number of trees James planted is \\boxed{48}.",
+   "pot_text": "```python\n# Calculate the total number of seeds\ntotal_seeds = 20 * 2\n\n# Calculate the number of seeds planted\nseeds_planted = total_seeds * 0.6\n\n# Calculate the number of trees planted\ntrees_planted = seeds_planted / 1\n\n# Print the result\nprint(int(trees_planted))\n```"
+  },
+  {
+   "id": "gsm8k-train-00183",
+   "reference": "349",
+   "greedy_answer": "349",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    7,
+    0
+   ],
+   "sampled_answers": [
+    null,
+    "0"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "349",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 417,
+   "greedy_text": "To determine how many birds will be left in the poultry after a week, we need to calculate the number of each type of bird lost each day and then sum these losses over the course of the week.\n\n1. **Chickens:**\n   - Initial number: 300\n   - Daily loss: 20\n   - Number of days in a week: 7\n   - Total loss of chickens in a week: \\( 20 \\times 7 = 140 \\)\n   - Number of chickens left after a week: \\( 300 - 140 = 160 \\)\n\n2. **Turkeys:**\n   - Initial number: 200\n   - Daily loss: 8\n   - Number of days in a week: 7\n   - Total loss of turkeys in a week: \\( 8 \\times 7 = 56 \\)\n   - Number of turkeys left after a week: \\( 200 - 56 = 144 \\)\n\n3. **Guinea fowls:**\n   - Initial number: 80\n   - Daily loss: 5\n   - Number of days in a week: 7\n   - Total loss of guinea fowls in a week: \\( 5 \\times 7 = 35 \\)\n   - Number of guinea fowls left after a week: \\( 80 - 35 = 45 \\)\n\n4. **Total number of birds left:**\n   - Total number of chickens: 160\n   - Total number of turkeys: 144\n   - Total number of guinea fowls: 45\n   - Total number of birds left: \\( 160 + 144 + 45 = 349 \\)\n\nTherefore, the number of birds left in the poultry after a week is \\(\\boxed{349}\\).",
+   "pot_text": "```python\n# initial number of birds\nchickens = 300\nturkeys = 200\nguinea_fowls = 80\n\n# number of birds lost per day\nchickens_lost_per_day = 20\nturkeys_lost_per_day = 8\nguinea_fowls_lost_per_day = 5\n\n# number of days in a week\ndays_in_week = 7\n\n# calculate the total number of birds lost in a week\ntotal_chickens_lost = chickens_lost_per_day * days_in_week\ntotal_turkeys_lost = turkeys_lost_per_day * days_in_week\ntotal_guinea_fowls_lost = guinea_fowls_lost_per_day * days_in_week\n\n# calculate the number of birds left after a week\ntotal_chickens_left = chickens - total_chickens_lost\ntotal_turkeys_left = turkeys - total_turkeys_lost\ntotal_guinea_fowls_left = guinea_fowls - total_guinea_fowls_lost\n\n# calculate the total number of birds left\ntotal_birds_left = total_chickens_left + total_turkeys_left + total_guinea_fowls_left\n\n# output the result\nprint(total_birds_left)\n```"
+  },
+  {
+   "id": "gsm8k-train-00196",
+   "reference": "15",
+   "greedy_answer": "15",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    2,
+    0
+   ],
+   "sampled_answers": [
+    "15",
+    "15"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": null,
+   "pot_status": "unsupported_statement:Expr",
+   "pot_correct": false,
+   "out_tokens": 186,
+   "greedy_text": "To determine Herbert's age next year, we need to follow these steps:\n\n1. **Identify Kris's current age:**\n   Kris is currently 24 years old.\n\n2. **Determine Herbert's current age:**\n   Herbert is 10 years younger than Kris. Therefore, we subtract 10 years from Kris's current age:\n   \\[\n   \\text{Herbert's current age} = 24 - 10 = 14\n   \\]\n\n3. **Calculate Herbert's age next year:**\n   Next year, Herbert will be 1 year older than he is now. Therefore, we add 1 year to his current age:\n   \\[\n   \\text{Herbert's age next year} = 14 + 1 = 15\n   \\]\n\nThus, Herbert will be \\boxed{15} years old next year.",
+   "pot_text": "```python\n# Given values\nkris_age_now = 24\n\n# Herbert is 10 years younger than Kris\nherbert_age_now = kris_age_now - 10\n\n# Herbert will be next year 10 years old\nherbert_age_next_year = herbert_age_now + 10\n\n# Output the final numeric result\nherbert_age_next_year\n```"
+  },
+  {
+   "id": "gsm8k-train-00199",
+   "reference": "150",
+   "greedy_answer": null,
+   "extraction": "none",
+   "greedy_correct": false,
+   "truncated": true,
+   "arith": [
+    1,
+    0
+   ],
+   "sampled_answers": [
+    "150",
+    null
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    false
+   ],
+   "pot_answer": null,
+   "pot_status": "unsupported_statement:Expr",
+   "pot_correct": false,
+   "out_tokens": 512,
+   "greedy_text": "To determine how much more Gary is spending per month to pay the loan off in 2 years instead of 5 years, we need to calculate the monthly payments for both scenarios and then find the difference.\n\n### Step 1: Calculate the monthly payment for 5 years\nThe formula for the monthly payment \\( M \\) on a loan is:\n\\[\nM = \\frac{P \\cdot r \\cdot (1 + r)^n}{(1 + r)^n - 1}\n\\]\nwhere:\n- \\( P \\) is the principal loan amount ($6,000),\n- \\( r \\) is the monthly interest rate (annual interest rate divided by 12),\n- \\( n \\) is the number of payments (loan term in years times 12).\n\nFirst, calculate the monthly interest rate \\( r \\):\n\\[\nr = \\frac{1\\%}{12} = \\frac{0.01}{12} \\approx 0.0008333\n\\]\n\nNext, calculate the total number of payments \\( n \\):\n\\[\nn = 5 \\times 12 = 60\n\\]\n\nNow, plug these values into the formula:\n\\[\nM = \\frac{6000 \\cdot 0.0008333 \\cdot (1 + 0.0008333)^{60}}{(1 + 0.0008333)^{60} - 1}\n\\]\n\nCalculate the term inside the parentheses:\n\\[\n(1 + 0.0008333)^{60} \\approx 1.61888\n\\]\n\nNow, calculate the monthly payment:\n\\[\nM = \\frac{6000 \\cdot 0.0008333 \\cdot 1.61888}{1.61888 - 1} \\approx \\frac{6000 \\cdot 0.001366}{0.61888} \\approx \\frac{8.196}{0.61888} \\approx 12.50\n\\]\n\nSo, the monthly payment for 5 years is approximately $12.50.\n\n### Step 2: Calculate the monthly payment for 2 years\nFor 2 years, the number of payments \\(",
+   "pot_text": "```python\n# Calculate the monthly payment for the loan\nmonthly_payment = 6000 / 12\n\n# Calculate the difference in monthly payments\ndifference = monthly_payment - 6000\n\n# Output the difference\ndifference\n```"
+  },
+  {
+   "id": "gsm8k-train-00226",
+   "reference": "91",
+   "greedy_answer": "55",
+   "extraction": "boxed",
+   "greedy_correct": false,
+   "truncated": false,
+   "arith": [
+    7,
+    1
+   ],
+   "sampled_answers": [
+    "91",
+    "91"
+   ],
+   "sampled_distinct_from_greedy": [
+    true,
+    true
+   ],
+   "pot_answer": "187",
+   "pot_status": "ok",
+   "pot_correct": false,
+   "out_tokens": 422,
+   "greedy_text": "To determine the total number of chairs in the hall, we need to break down the problem into smaller parts and calculate step by step.\n\n1. **Calculate the number of tables with 2 chairs each:**\n   There are 32 tables in total, and half of them have 2 chairs each.\n   \\[\n   \\text{Number of tables with 2 chairs} = \\frac{32}{2} = 16\n   \\]\n\n2. **Calculate the number of tables with 3 chairs each:**\n   There are 5 tables with 3 chairs each.\n   \\[\n   \\text{Number of tables with 3 chairs} = 5\n   \\]\n\n3. **Calculate the number of tables with 4 chairs each:**\n   The rest of the tables have 4 chairs each. First, we need to find out how many tables there are in total with 4 chairs.\n   \\[\n   \\text{Total number of tables with 4 chairs} = 32 - 16 - 5 = 11\n   \\]\n   Now, we calculate the number of tables with 4 chairs:\n   \\[\n   \\text{Number of tables with 4 chairs} = \\frac{11}{4} = 2 \\text{ (since we can't have a fraction of a table, we need to round down to the nearest whole number)}\n   \\]\n\n4. **Calculate the total number of chairs:**\n   - Chairs from tables with 2 chairs: \\(16 \\times 2 = 32\\)\n   - Chairs from tables with 3 chairs: \\(5 \\times 3 = 15\\)\n   - Chairs from tables with 4 chairs: \\(2 \\times 4 = 8\\)\n   \\[\n   \\text{Total number of chairs} = 32 + 15 + 8 = 55\n   \\]\n\nTherefore, the total number of chairs in the hall is \\(\\boxed{55}\\).",
+   "pot_text": "```python\n# Calculate the total number of chairs\ntotal_chairs = 32 * 2 + 5 * 3 + (32 - 5) * 4\n\n# Print the result\nprint(total_chairs)\n```"
+  },
+  {
+   "id": "gsm8k-train-00238",
+   "reference": "7",
+   "greedy_answer": "7",
+   "extraction": "boxed",
+   "greedy_correct": true,
+   "truncated": false,
+   "arith": [
+    5,
+    0
+   ],
+   "sampled_answers": [
+    "7",
+    "7"
+   ],
+   "sampled_distinct_from_greedy": [
+    false,
+    false
+   ],
+   "pot_answer": "7",
+   "pot_status": "ok",
+   "pot_correct": true,
+   "out_tokens": 320,
+   "greedy_text": "To determine how many cookies Jack needs to sell to reach his goal, we need to follow these steps:\n\n1. Calculate the total amount of money Jack has already made from selling brownies and lemon squares.\n2. Determine how much more money Jack needs to make to reach his goal of $50.\n3. Calculate how many cookies Jack needs to sell to make the remaining amount of money.\n\nLet's start with the first step:\n\n1. Calculate the total amount of money Jack has already made:\n   - He sold 4 brownies at $3 each.\n   - He sold 5 lemon squares at $2 each.\n   - Total money from brownies = \\(4 \\times 3 = 12\\) dollars.\n   - Total money from lemon squares = \\(5 \\times 2 = 10\\) dollars.\n   - Total money from brownies and lemon squares = \\(12 + 10 = 22\\) dollars.\n\n2. Determine how much more money Jack needs to make to reach his goal of $50:\n   - Goal amount = $50.\n   - Money already made = $22.\n   - Money needed = \\(50 - 22 = 28\\) dollars.\n\n3. Calculate how many cookies Jack needs to sell to make the remaining amount of money:\n   - Each cookie is sold for $4.\n   - Number of cookies needed = \\(\\frac{28}{4} = 7\\).\n\nTherefore, Jack needs to sell \\(\\boxed{7}\\) cookies to reach his goal.",
+   "pot_text": "```python\n# Calculate the total money Jack has already made from selling brownies and lemon squares\ntotal_brownies_sold = 4 * 3\ntotal_lemon_squares_sold = 5 * 2\n\n# Calculate the remaining money Jack needs to make to reach his goal of $50\nremaining_money_needed = 50 - (total_brownies_sold + total_lemon_squares_sold)\n\n# Calculate the number of cookies Jack needs to sell to reach his goal\n# Since each cookie costs $4, we divide the remaining money needed by $4\ncookies_needed = remaining_money_needed / 4\n\n# Print the number of cookies Jack needs to sell\nprint(cookies_needed)\n```"
+  }
+ ]
+}

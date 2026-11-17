@@ -1,0 +1,20 @@
+{
+ "frozen_at_local": "2026-11-17T03:26:08",
+ "statement": "Policies and settings below were fixed before any metric was computed on test data.",
+ "sha256": {
+  "artifacts/policies\\coordinator.json": "a3b593a6430a3c2386ff638622890fd6d08de84217df49975af55eb9dac97b48",
+  "artifacts/policies\\coordinator_seed0.json": "0f943c8c29e708522822079b316a680c4984b6bab02dbe76243f6ab29e42e111",
+  "artifacts/policies\\coordinator_seed1.json": "a3b593a6430a3c2386ff638622890fd6d08de84217df49975af55eb9dac97b48",
+  "artifacts/policies\\coordinator_seed2.json": "95b300362439b7389d94e214d4e79402449126cce071b920d05f58bb0f1036f3",
+  "artifacts/policies\\coordinator_seed3.json": "110223f752dd0585553e70977b611c3102ba9344f3e024ffad7c49d0fd968194",
+  "artifacts/policies\\coordinator_seed4.json": "3eaa60aa514706b6edadb367a076b22967b434a2df045462c430041c28517947",
+  "src/config.py": "910afdd1f6cb32cca78472f45135d6e5800d213e27a82d7eda30a90b6f71e90c",
+  "src/environment/reward.py": "bd1d3663ad34c00bd31cc20d639ffb58c2631d6cda139c6472518023e8c0a18c",
+  "src/coordinator/fixed_policy.py": "82e3173700b92b1c36041f83fb060b47b61e9e1c2f34ee2051d56fc8ef569cde",
+  "src/coordinator/features.py": "2624223a164693fc4882f14a84dd0de6bf54878dc54be3ee96d894575ef8b9bb",
+  "src/environment/coordination_env.py": "9bb39ae8bdb6135939ccf9b1b8f68f0ecdc2bd8c500dab223b132eeb673f9d6c",
+  "src/verifier/verifier.py": "73ee6a7c3b7326a3d0d2407e437048f88176d1b4029c87a1b097c3c1a5d72f85",
+  "src/solver/prompts.py": "a9b1776a13721b95efd3bbbe12084470c057a65eecefcd069d999e490afe8210",
+  "configs/experiment.json": "ffb0822eafb5b703708d19a167fc6b0fb6df834d783115a893ec191e162d4020"
+ }
+}

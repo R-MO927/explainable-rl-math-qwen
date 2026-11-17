@@ -1,0 +1,304 @@
+{
+  "passed": true,
+  "n_checks": 58,
+  "n_failed": 0,
+  "checks": [
+    {
+      "check": "raw train: sha256 matches download manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw train: record count == manifest (7473)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw test: sha256 matches download manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw test: record count == manifest (1319)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw: official sizes 7473 / 1319",
+      "passed": true,
+      "detail": [
+        7473,
+        1319
+      ]
+    },
+    {
+      "check": "raw: license file is MIT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: split_ids/train.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train: split field == 'train'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: split_ids/validation.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation: split field == 'validation'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: split_ids/test.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test: split field == 'test'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: split_ids/train_small.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: split field == 'train'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: split_ids/validation_small.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: split field == 'validation'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: file sha256 matches split_manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: ids match split_manifest (order incl.)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: split_ids/test_small.txt matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: ids unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: all required fields present, no extras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: split field == 'test'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "records: verbatim text, correct source, final answer & normalization re-derived independently",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "splits: train/validation/test ids pairwise disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "splits: no overlap by normalized question text (punctuation/space/case-insensitive)",
+      "passed": true,
+      "detail": {
+        "train&val": 0,
+        "train&test": 0,
+        "val&test": 0
+      }
+    },
+    {
+      "check": "test: equals the full official test set, unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train+validation+excluded+invalid == all official train ids (nothing dropped silently)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation size == round(10% of train pool)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: size == 500",
+      "passed": true,
+      "detail": 500
+    },
+    {
+      "check": "train_small: subset of train",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "train_small: rows identical to train rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: size == 100",
+      "passed": true,
+      "detail": 100
+    },
+    {
+      "check": "validation_small: subset of validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "validation_small: rows identical to validation rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: size == 200",
+      "passed": true,
+      "detail": 200
+    },
+    {
+      "check": "test_small: subset of test",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test_small: rows identical to test rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "determinism: re-running prepare_data.py gives byte-identical jsonl files and ids",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

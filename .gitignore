@@ -1,0 +1,18 @@
+# Python environment and caches (recreate with requirements.txt; see README)
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Model weights live in the Hugging Face cache, never in the repo
+*.safetensors
+*.bin
+
+# Local secrets, if any are ever added
+.env
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
