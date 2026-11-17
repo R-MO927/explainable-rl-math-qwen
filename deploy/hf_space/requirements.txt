@@ -1,7 +1,8 @@
-# CPU runtime for the Hugging Face Space (torch CPU wheel is installed separately in the Dockerfile).
+# Runtime for the Hugging Face Space (Gradio SDK 6.32.0, Python 3.12, ZeroGPU).
+torch==2.9.1
 numpy==2.2.6
 transformers==5.23.0
 tokenizers==0.23.3
 safetensors==0.8.0
-huggingface_hub==2.4.0
 Jinja2==3.1.6
+spaces

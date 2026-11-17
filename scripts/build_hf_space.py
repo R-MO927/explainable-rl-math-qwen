@@ -2,6 +2,7 @@
 
     .venv\\Scripts\\python.exe scripts\\build_hf_space.py
 
+If build/hf_space is a clone of the Space, its .git folder and .gitattributes are kept.
 The folder is then pushed to the Space's own git repository. Nothing here changes results:
 the Space reads the same saved metrics, figures and trained policy as the local app.
 """
@@ -27,12 +28,13 @@ COPY = [
     "results/figures/learning_curves.png",
     "results/figures/policy_qvalues.png",
 ]
-SPACE_FILES = ["Dockerfile", "README.md", "requirements.txt"]
+SPACE_FILES = ["app.py", "README.md", "requirements.txt"]
 GITATTRIBUTES = "*.png filter=lfs diff=lfs merge=lfs -text\n*.woff2 filter=lfs diff=lfs merge=lfs -text\n"
 IGNORE = shutil.ignore_patterns("__pycache__", "*.pyc", "demo_solver.py.bak")
 
 
 def main():
+    ga_before = (OUT / ".gitattributes").read_text(encoding="utf-8") if (OUT / ".gitattributes").exists() else None
     if OUT.exists():
         # keep the Space's .git folder (if this folder is already a clone of the Space)
         for child in OUT.iterdir():
@@ -49,7 +51,10 @@ def main():
             shutil.copy2(src, dst)
     for name in SPACE_FILES:
         shutil.copy2(ROOT / "deploy" / "hf_space" / name, OUT / name)
-    (OUT / ".gitattributes").write_text(GITATTRIBUTES, encoding="utf-8", newline="\n")
+    keep = ga_before or ""
+    missing = [line for line in GITATTRIBUTES.splitlines() if line.split()[0] not in keep]
+    text = keep.rstrip("\n") + ("\n" if keep else "") + "".join(m + "\n" for m in missing)
+    (OUT / ".gitattributes").write_text(text, encoding="utf-8", newline="\n")
     n = sum(1 for p in OUT.rglob("*") if p.is_file() and ".git" not in p.parts)
     size = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file() and ".git" not in p.parts)
     print(f"[ok] {OUT}  ({n} files, {size / 1e6:.1f} MB)")

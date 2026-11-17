@@ -77,7 +77,8 @@ class ModelHolder:
                 info = self.solver.info()
             except Exception:
                 info = None
-        return {"status": state, "demo": self.demo, "error": self.error, "model": info}
+        return {"status": state, "demo": self.demo, "error": self.error, "model": info,
+                "site": os.environ.get("MM_SITE", "local")}
 
 
 def enrich(result: dict) -> dict:

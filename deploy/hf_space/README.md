@@ -3,10 +3,12 @@ title: MathMates
 emoji: 🧮
 colorFrom: indigo
 colorTo: purple
-sdk: docker
-app_port: 7860
+sdk: gradio
+sdk_version: 6.32.0
+python_version: '3.12'
+app_file: app.py
 pinned: false
-short_description: Explainable multi-agent RL math solver with Qwen2.5-0.5B
+short_description: Explainable multi-agent RL math solver (Qwen2.5-0.5B)
 ---
 
 # MathMates — Explainable Multi-Agent RL for Mathematical Reasoning
@@ -19,7 +21,7 @@ A university project. Three roles solve grade-school math word problems:
 
 The page is in English and Arabic. Questions should be in English.
 
-This Space runs on free CPU hardware, so each try can take 20–60 seconds, and one question is solved at a time.
+This Space runs on shared ZeroGPU hardware: a GPU is assigned for each question, the first question can take a little longer, and each visitor has a limited amount of free GPU time per day.
 The results section shows the saved evaluation on the GSM8K test set (1,319 problems); it does not change with your question.
 
 Code, data preparation, training and the full report: https://github.com/R-MO927/explainable-rl-math-qwen
