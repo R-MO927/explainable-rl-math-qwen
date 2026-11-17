@@ -98,7 +98,7 @@
       $("#elapsed").textContent = "0";
       $("#loadingMsg").textContent = t("loading1");
       timerId = setInterval(() => { $("#elapsed").textContent = Math.floor((performance.now() - t0) / 1000); }, 250);
-      msgId = setInterval(() => { i = (i + 1) % 4; $("#loadingMsg").textContent = t(`loading${i + 1}`); }, 4000);
+      msgId = setInterval(() => { i = (i + 1) % 4; $("#loadingMsg").textContent = t(`loading${i + 1}`); Sfx.play("blip"); }, 4000);
       $("#loading").scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
@@ -110,7 +110,8 @@
   async function solve() {
     const question = $("#question").value.trim();
     $("#errorBox").hidden = true;
-    if (!question) return showError(t("err_empty_question"));
+    if (!question) { Sfx.play("error"); return showError(t("err_empty_question")); }
+    Sfx.play("launch");
     const method = ($("input[name=method]:checked") || {}).value || "rl";
     const budget = parseInt($("#budget").value, 10);
     busy = true; renderHealth();
@@ -126,14 +127,17 @@
       });
       const data = await r.json().catch(() => ({}));
       if (!r.ok) {
+        Sfx.play("error");
         const key = `err_${data.error}`;
         showError(I18N.t(key) !== key ? t(key) : t("err_generic", { d: data.detail || data.error || r.status }));
       } else {
         lastResult = data;
         renderResult();
-        if (data.final_answer != null) burst();   // celebrates finishing, not correctness
+        if (data.final_answer != null) { burst(); Sfx.play("success"); Sfx.play("sparkle"); }   // celebrates finishing, not correctness
+        else Sfx.play("uhoh");
       }
     } catch (e) {
+      Sfx.play("error");
       showError(e.name === "AbortError" ? t("err_timeout") : t("err_network"));
     } finally {
       clearTimeout(kill);
@@ -424,15 +428,39 @@
     };
     q.addEventListener("input", onInput);
     q.addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) solve(); });
-    $$(".chip[data-example]").forEach((b) => b.addEventListener("click", () => { q.value = EXAMPLES[+b.dataset.example]; onInput(); q.focus(); }));
-    $("#budget").addEventListener("input", (e) => ($("#budgetVal").textContent = e.target.value));
+    $$(".chip[data-example]").forEach((b) => b.addEventListener("click", () => { Sfx.play("pop"); q.value = EXAMPLES[+b.dataset.example]; onInput(); q.focus(); }));
+    $("#budget").addEventListener("input", (e) => { $("#budgetVal").textContent = e.target.value; Sfx.play("tick"); });
+    $$("input[name=method]").forEach((r) => r.addEventListener("change", () => Sfx.play("select")));
     $("#solveBtn").addEventListener("click", solve);
-    $("#langBtn").addEventListener("click", () => I18N.set(I18N.lang === "en" ? "ar" : "en"));
+    $("#langBtn").addEventListener("click", () => { Sfx.play("swoosh"); I18N.set(I18N.lang === "en" ? "ar" : "en"); });
+    const muteBtn = $("#muteBtn");
+    const showMute = () => { muteBtn.textContent = Sfx.muted ? "🔇" : "🔊"; muteBtn.setAttribute("aria-pressed", String(Sfx.muted)); muteBtn.title = t(Sfx.muted ? "soundOff" : "soundOn"); };
+    muteBtn.addEventListener("click", () => { Sfx.toggle(); showMute(); });
+    document.addEventListener("langchange", showMute);
+    showMute();
     $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
+      Sfx.play("tab");
       $$(".tab").forEach((x) => x.classList.toggle("active", x === tab));
       $$(".tab-panel").forEach((p) => (p.hidden = p.dataset.panel !== tab.dataset.tab));
+      if (tab.dataset.tab === "fruits") {   // a pop for each fruit card as it appears
+        const n = Math.min(6, $$("#fruits .fruit-card").length);
+        for (let k = 0; k < n; k++) setTimeout(() => Sfx.play("pop"), 90 * k + 60);
+      }
     }));
+    // generic click sound for links/buttons that have no special sound
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest(".nav a, .btn-primary, .btn-ghost, .link, .brand");
+      if (el) Sfx.play("click");
+      // tap a mascot: it jumps and says hello in its own voice
+      const m = e.target.closest(".mascot-svg");
+      if (m) {
+        const voice = { Robo: "robo", Hoot: "hoot", "Captain Q": "captain" }[m.getAttribute("aria-label")];
+        if (voice) Sfx.play(voice);
+        m.classList.remove("jump"); void m.getBoundingClientRect(); m.classList.add("jump");
+      }
+    });
     $$(".seg[data-split]").forEach((b) => b.addEventListener("click", () => {
+      Sfx.play("tab");
       split = b.dataset.split;
       $$(".seg[data-split]").forEach((x) => x.classList.toggle("active", x === b));
       renderResults();

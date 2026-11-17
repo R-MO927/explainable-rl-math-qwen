@@ -96,6 +96,14 @@ a { color: var(--sky); }
 }
 .lang-btn:hover { transform: translateY(-2px) rotate(-2deg); }
 .lang-sep { opacity: 0.4; margin: 0 6px; }
+.mute-btn {
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
+  background: var(--card); border: 1px solid var(--line); color: var(--text); transition: transform 0.15s;
+}
+.mute-btn:hover { transform: scale(1.1) rotate(-8deg); }
+.mascot-svg { cursor: pointer; }
+.mascot-svg.jump { animation: jump 0.6s cubic-bezier(.3,1.6,.5,1); }
+@keyframes jump { 0% { transform: translateY(0) scale(1); } 30% { transform: translateY(-22px) scale(1.08, 0.94) rotate(-6deg); } 60% { transform: translateY(0) scale(1.06, 0.92); } 100% { transform: none; } }
 .lang-off { opacity: 0.6; }
 .demo-banner {
   text-align: center; padding: 8px 16px; font-weight: 700; color: #1b1546;

@@ -2,7 +2,7 @@
 (function () {
   const S = {
     en: {
-      brand: "MathMates", brandSub: "Explainable RL math team",
+      brand: "MathMates", brandSub: "Explainable RL math team", soundOn: "Sound on (click to mute)", soundOff: "Sound off (click to turn on)",
       navSolve: "Solve", navTeam: "Meet the team", navResults: "Results",
       modelLoading: "Model warming up…", modelReady: "Model ready", modelError: "Model failed to load", modelDemo: "Demo mode",
       demoBanner: "DEMO MODE: answers are canned sample text, not the real model. Start the server without --demo for real solutions.",
@@ -90,7 +90,7 @@
       footer: "University project · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · runs locally on your GPU",
     },
     ar: {
-      brand: "رفاق الرياضيات", brandSub: "فريق رياضيات بالتعلّم المعزّز وقابل للتفسير",
+      brand: "رفاق الرياضيات", brandSub: "فريق رياضيات بالتعلّم المعزّز وقابل للتفسير", soundOn: "الصوت شغّال (دوس للكتم)", soundOff: "الصوت مكتوم (دوس للتشغيل)",
       navSolve: "حلّ مسألة", navTeam: "تعرّف على الفريق", navResults: "النتائج",
       modelLoading: "الموديل بيجهز…", modelReady: "الموديل جاهز", modelError: "الموديل لم يُحمَّل", modelDemo: "وضع تجريبي",
       demoBanner: "وضع تجريبي: الإجابات نص ثابت للعرض وليست من الموديل الحقيقي. شغّل السيرفر بدون ‎--demo للحل الحقيقي.",
