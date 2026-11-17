@@ -60,7 +60,7 @@ shellingham==1.5.4
 stack-data==0.6.3
 sympy==1.14.0
 tokenizers==0.23.3
-torch @ file:///C:/Users/EGYSKY~1/AppData/Local/Temp/claude/d100252ab02abc8c/132fd824-834f-4c56-afad-1bedeece1061/scratchpad/wheels/torch-2.9.1%2Bcu126-cp312-cp312-win_amd64.whl#sha256=f2f1c68c7957ed8b6b56fc450482eb3fa53947fb74838b03834a1760451cf60f
+torch==2.9.1+cu126  # install with: --index-url https://download.pytorch.org/whl/cu126
 tornado==6.6.1
 tqdm==4.70.1
 traitlets==5.16.1
