@@ -54,6 +54,7 @@
 
 ## Web app
 
+- **Online (public):** https://huggingface.co/spaces/Rahmamohamed5/mathmates on free ZeroGPU hardware. Verified 2026-11-17: the public URL solved a new question correctly (26) in about 4–5 s with methods C and B.
 - `scripts/run_web.py` serves the page at http://127.0.0.1:8000 (local only). The model loads in the background (about 15 s).
 - One GPU request at a time (a second one gets HTTP 429), 5-minute client timeout, loading animation with a timer, clear "no answer" display.
 - Standard-library server instead of FastAPI: Smart App Control on this machine has blocked new native wheels before, and FastAPI depends on one (pydantic-core).

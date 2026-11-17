@@ -1,5 +1,7 @@
 # Explainable Multi-Agent RL for Mathematical Reasoning (Qwen2.5-0.5B, GSM8K)
 
+**▶ Try it online:** https://huggingface.co/spaces/Rahmamohamed5/mathmates (free ZeroGPU Space; English/Arabic page; questions in English)
+
 Three cooperating software roles solve grade-school math word problems:
 
 | Role | Implementation | Learns? |
@@ -75,7 +77,13 @@ r = solve_problem(question, method="rl", budget=4, seed=0)   # method: single | 
 r["final_answer"], r["actions"], r["explanations"], r["usage"]
 ```
 
-## Web app (local)
+## Web app
+
+Online: https://huggingface.co/spaces/Rahmamohamed5/mathmates (direct: https://rahmamohamed5-mathmates.hf.space).
+It runs the same code on a shared ZeroGPU GPU (a GPU is assigned per question; each visitor has limited free GPU time per day).
+The Space is built from this repository with `scripts/build_hf_space.py` and `deploy/hf_space/` (`app.py` wraps each solve in `@spaces.GPU`).
+
+### Local
 
 A bilingual (English / Arabic) web page for trying questions, with step-by-step solutions,
 formulas rendered with KaTeX, calculations drawn as fruit and toys, and an explanation of every
