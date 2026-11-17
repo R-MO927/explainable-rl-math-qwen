@@ -23,7 +23,21 @@ def gpu_solve(question, method="rl", budget=4, seed=0, solver=None):
     return solve_problem(question, method=method, budget=budget, seed=seed, solver=SOLVER)
 
 
+def zerogpu_ready():
+    """ZeroGPU normally runs its startup step when Gradio's server starts. This app serves the page
+    with its own small HTTP server, so it runs the same step itself (spaces==0.52.1 lifecycle API):
+    it registers the @spaces.GPU function and packs the loaded weights for the GPU workers."""
+    try:
+        from spaces.zero.lifecycle import zerogpu_mode_enabled, zerogpu_startup
+    except ImportError:          # local runs without the real `spaces` package
+        return
+    if zerogpu_mode_enabled():
+        zerogpu_startup()
+        print("ZeroGPU startup done", flush=True)
+
+
 if __name__ == "__main__":
+    zerogpu_ready()
     port = int(os.environ.get("PORT", "7860"))
     httpd, _ = build_server(port=port, host="0.0.0.0", solver_factory=lambda: SOLVER, solve_fn=gpu_solve)
     print(f"MathMates Space listening on 0.0.0.0:{port}", flush=True)
