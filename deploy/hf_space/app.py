@@ -19,8 +19,15 @@ SOLVER = get_solver()
 
 
 @spaces.GPU(duration=120)
-def gpu_solve(question, method="rl", budget=4, seed=0, solver=None):
+def _gpu_solve(question: str, method: str, budget: int, seed: int) -> dict:
+    # Runs in a ZeroGPU worker: arguments and result must be picklable (plain str/int/dict),
+    # so the solver object is not passed in; the worker uses the module-level SOLVER.
     return solve_problem(question, method=method, budget=budget, seed=seed, solver=SOLVER)
+
+
+def gpu_solve(question, method="rl", budget=4, seed=0, solver=None):
+    """Same signature as solve_problem() for web.server; drops the (unpicklable) solver argument."""
+    return _gpu_solve(str(question), str(method), int(budget), int(seed))
 
 
 def zerogpu_ready():
