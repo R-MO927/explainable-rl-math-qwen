@@ -33,6 +33,8 @@ def explain_decision(obs: dict, action: int, policy_name: str, q_values: list[fl
         "q_values": None,
         "visits": visits,
         "fallback": bool(info.get("fallback")),
+        "rule": info.get("rule") or info.get("fallback_rule"),
+        "candidate": obs.get("candidate_answer"),
     }
     if q_values is not None:
         out["q_values"] = {ACTION_NAMES[a]: (round(q_values[a], 4) if mask[a] else None) for a in range(N_ACTIONS)}

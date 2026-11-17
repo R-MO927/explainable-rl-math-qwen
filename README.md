@@ -75,6 +75,23 @@ r = solve_problem(question, method="rl", budget=4, seed=0)   # method: single | 
 r["final_answer"], r["actions"], r["explanations"], r["usage"]
 ```
 
+## Web app (local)
+
+A bilingual (English / Arabic) web page for trying questions, with step-by-step solutions,
+formulas rendered with KaTeX, calculations drawn as fruit and toys, and an explanation of every
+coordinator decision (Q-values included). It also shows the saved test results.
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_web.py            # real model on the GPU -> http://127.0.0.1:8000
+.\.venv\Scripts\python.exe scripts\run_web.py --demo     # UI preview with canned text, no model
+```
+
+- Standard library HTTP server (`web/server.py`), bound to 127.0.0.1 only; one GPU request at a time.
+- Endpoints: `POST /api/solve`, `GET /api/health`, `GET /api/results`, `GET /figures/<name>.png`.
+- Link parameters: `/?q=...&method=rl|fixed|single&budget=1..4&lang=en|ar&tab=steps|fruits|story|tries&solve=1`.
+- The `--demo` mode returns fixed sample text that ignores the question; the page shows a banner whenever it is on.
+- The mascots (Robo, Hoot, Captain Q) are original inline SVG. KaTeX 0.16.11 (MIT) is vendored in `web/static/vendor/katex/`.
+
 ## Layout
 
 ```
@@ -87,6 +104,7 @@ src/coordinator/             features, fixed rule, Q-learning, training loop
 src/explainability/          template explanations from Q-values
 src/evaluation/              episode runner, metrics (Wilson CI, paired bootstrap, McNemar)
 src/pipeline.py              solve_problem(...)
+web/                         local web app (server.py, static/)
 scripts/                     CLI entry points (see above)
 artifacts/cache/             cached generations (keyed by question/model/prompt/decoding/seed)
 artifacts/policies/          trained Q-tables (JSON)

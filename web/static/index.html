@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathMates</title>
+  <meta name="description" content="Explainable multi-agent reinforcement learning for math word problems, with Qwen2.5-0.5B.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="MathMates">
+      <span class="brand-logo" aria-hidden="true">∑</span>
+      <span class="brand-text">
+        <strong data-i18n="brand">MathMates</strong>
+        <small data-i18n="brandSub">Explainable RL math team</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#solve" data-i18n="navSolve">Solve</a>
+      <a href="#team" data-i18n="navTeam">Meet the team</a>
+      <a href="#results" data-i18n="navResults">Results</a>
+    </nav>
+    <div class="top-actions">
+      <span id="modelPill" class="pill pill-loading"><span class="dot"></span><span id="modelPillText" data-i18n="modelLoading">Model warming up…</span></span>
+      <button id="langBtn" class="lang-btn" type="button" aria-label="Switch language">
+        <span class="lang-on">EN</span><span class="lang-sep">|</span><span class="lang-off">عربي</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="demoBanner" class="demo-banner" hidden data-i18n="demoBanner">
+    DEMO MODE: answers are canned sample text, not the real model. Start the server without --demo for real solutions.
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="heroEyebrow">Qwen2.5-0.5B · GSM8K · Q-learning</span>
+        <h1><span data-i18n="heroTitle1">Math problems,</span> <span class="grad" data-i18n="heroTitle2">solved as a team</span></h1>
+        <p class="lead" data-i18n="heroLead">Robo writes a solution, Hoot checks every calculation, and Captain Q, who learned with reinforcement learning, decides when the answer is good enough. Every decision is explained.</p>
+        <div class="hero-cta">
+          <a href="#solve" class="btn btn-primary" data-i18n="heroCta">Try a question ✨</a>
+          <a href="#results" class="btn btn-ghost" data-i18n="heroCta2">See the results</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit">
+          <span class="float-sym s1">π</span><span class="float-sym s2">√</span><span class="float-sym s3">÷</span>
+          <span class="float-sym s4">∞</span><span class="float-sym s5">×</span><span class="float-sym s6">½</span>
+        </div>
+        <div class="mascot-stage">
+          <div class="m m-robo" data-mascot="robo"></div>
+          <div class="m m-hoot" data-mascot="hoot"></div>
+          <div class="m m-cap" data-mascot="captain"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLVE -->
+    <section id="solve" class="card solve-card">
+      <div class="solve-head">
+        <div class="solve-mascot" data-mascot="robo"></div>
+        <div>
+          <h2 data-i18n="solveTitle">Write your math question here ✏️</h2>
+          <p class="muted" data-i18n="solveHint">Use English: the model and all our tests were in English. No answer key is needed.</p>
+        </div>
+      </div>
+
+      <label for="question" class="sr-only" data-i18n="solveTitle">Write your math question here</label>
+      <div class="question-wrap">
+        <textarea id="question" rows="5" maxlength="1000" dir="ltr"
+          placeholder="Example: Sara has 5 boxes with 12 pencils each. She gives away 17 pencils. How many pencils does she have now?"></textarea>
+        <span id="charCount" class="char-count">0 / 1000</span>
+      </div>
+      <p id="arabicWarn" class="warn" hidden data-i18n="arabicWarn">⚠️ This looks like Arabic. The model was only tested in English, so the answer may be less reliable.</p>
+
+      <div class="examples">
+        <span class="muted small" data-i18n="examplesLabel">Try one:</span>
+        <button type="button" class="chip" data-example="0">🍎 Apples</button>
+        <button type="button" class="chip" data-example="1">🚂 Train</button>
+        <button type="button" class="chip" data-example="2">🥚 Eggs</button>
+        <button type="button" class="chip" data-example="3">🎈 Balloons</button>
+      </div>
+
+      <fieldset class="methods">
+        <legend data-i18n="methodLegend">Who should solve it?</legend>
+        <label class="method m-A">
+          <input type="radio" name="method" value="single">
+          <span class="method-card">
+            <span class="method-tag">A</span>
+            <strong data-i18n="mA">Robo alone</strong>
+            <small data-i18n="mAdesc">One careful try. Fastest.</small>
+          </span>
+        </label>
+        <label class="method m-B">
+          <input type="radio" name="method" value="fixed">
+          <span class="method-card">
+            <span class="method-tag">B</span>
+            <strong data-i18n="mB">Rule book</strong>
+            <small data-i18n="mBdesc">Robo + Hoot follow a fixed rule. Most accurate on our test.</small>
+          </span>
+        </label>
+        <label class="method m-C">
+          <input type="radio" name="method" value="rl" checked>
+          <span class="method-card">
+            <span class="method-tag">C</span>
+            <strong data-i18n="mC">Captain Q (RL)</strong>
+            <small data-i18n="mCdesc">A learned coach decides. Cheaper than B.</small>
+          </span>
+        </label>
+      </fieldset>
+
+      <div class="budget-row">
+        <label for="budget"><span data-i18n="budgetLabel">Max tries for Robo</span>: <strong id="budgetVal">4</strong></label>
+        <input id="budget" type="range" min="1" max="4" step="1" value="4">
+      </div>
+
+      <button id="solveBtn" class="btn btn-solve" type="button">
+        <span class="btn-ico" aria-hidden="true">🚀</span><span data-i18n="solveBtn">Solve it!</span>
+      </button>
+      <p class="muted small center" data-i18n="speedNote">Each try takes about 5–20 seconds on this laptop (slower on battery).</p>
+    </section>
+
+    <!-- LOADING -->
+    <section id="loading" class="card loading-card" hidden aria-live="polite">
+      <div class="loading-mascots">
+        <div data-mascot="robo" class="bob"></div>
+        <div data-mascot="hoot" class="bob d1"></div>
+        <div data-mascot="captain" class="bob d2"></div>
+      </div>
+      <h3 id="loadingMsg" data-i18n="loading1">The team is working on it…</h3>
+      <div class="dots"><span></span><span></span><span></span></div>
+      <p class="muted"><span data-i18n="elapsed">Elapsed</span>: <strong id="elapsed">0</strong> s</p>
+    </section>
+
+    <!-- ERROR -->
+    <section id="errorBox" class="card error-card" hidden role="alert">
+      <div data-mascot="hoot" class="err-mascot"></div>
+      <div><h3 data-i18n="errTitle">Oops!</h3><p id="errorText"></p></div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result" hidden>
+      <div class="card answer-card">
+        <div class="answer-left">
+          <span class="muted" data-i18n="finalAnswer">Final answer</span>
+          <div id="answerValue" class="answer-value">—</div>
+          <div id="answerBadges" class="badges"></div>
+        </div>
+        <div class="answer-right">
+          <div class="usage" id="usage"></div>
+          <p class="muted small" data-i18n="honestNote">The team double-checks, but computers can still make mistakes. No answer key was used.</p>
+        </div>
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="steps" data-i18n="tabSteps">📝 Steps & formulas</button>
+        <button class="tab" role="tab" data-tab="fruits" data-i18n="tabFruits">🍎 Math with fruits</button>
+        <button class="tab" role="tab" data-tab="story" data-i18n="tabStory">💬 Why? (team decisions)</button>
+        <button class="tab" role="tab" data-tab="tries" data-i18n="tabTries">🔁 All tries</button>
+      </div>
+
+      <div class="tab-panel card" data-panel="steps">
+        <p class="muted small" id="stepsFrom"></p>
+        <ol id="steps" class="steps" dir="ltr"></ol>
+      </div>
+      <div class="tab-panel card" data-panel="fruits" hidden>
+        <p class="muted" data-i18n="fruitsIntro">Hoot found these calculations in Robo's solution and checked each one. Small numbers are drawn with fruit and toys!</p>
+        <div id="fruits" class="fruits"></div>
+      </div>
+      <div class="tab-panel card" data-panel="story" hidden>
+        <p class="muted" data-i18n="storyIntro">Every move the team made, and the reason for it. Scores are Q-values: how good each move looked to Captain Q during training.</p>
+        <div id="story" class="story"></div>
+        <details class="tech"><summary data-i18n="techLog">Technical log (original English)</summary><pre id="techLog" dir="ltr"></pre></details>
+      </div>
+      <div class="tab-panel card" data-panel="tries" hidden>
+        <div id="tries" class="tries"></div>
+        <div id="potBox" class="pot" hidden></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="section">
+      <h2 class="section-title" data-i18n="teamTitle">Meet the team</h2>
+      <p class="section-sub muted" data-i18n="teamSub">Three roles in code. Only Captain Q learns; Robo's brain (Qwen) stays frozen.</p>
+      <div class="team-grid">
+        <article class="card team-card t-robo">
+          <div data-mascot="robo" class="team-mascot"></div>
+          <h3 data-i18n="robo">Robo · the Solver</h3>
+          <p data-i18n="roboDesc">Qwen2.5-0.5B-Instruct writes a step-by-step solution and puts the answer in a box. Try 1 is careful (greedy); later tries are a bit creative (sampled).</p>
+        </article>
+        <article class="card team-card t-hoot">
+          <div data-mascot="hoot" class="team-mascot"></div>
+          <h3 data-i18n="hoot">Hoot · the Verifier</h3>
+          <p data-i18n="hootDesc">Never sees the answer key. Checks every written calculation with a safe calculator, and can ask for a tiny Python program to compute the answer another way.</p>
+        </article>
+        <article class="card team-card t-cap">
+          <div data-mascot="captain" class="team-mascot"></div>
+          <h3 data-i18n="cap">Captain Q · the Coordinator</h3>
+          <p data-i18n="capDesc">Learned with Q-learning which move pays off: accept, try again, or double-check. Each move costs a little, a right answer earns +1, a wrong one −1.</p>
+        </article>
+      </div>
+
+      <div class="card flow">
+        <div class="flow-step"><span class="flow-ico">❓</span><span data-i18n="flow1">Question</span></div>
+        <span class="flow-arrow" aria-hidden="true">➜</span>
+        <div class="flow-step"><span class="flow-ico">🤖</span><span data-i18n="flow2">Robo solves</span></div>
+        <span class="flow-arrow" aria-hidden="true">➜</span>
+        <div class="flow-step"><span class="flow-ico">🦉</span><span data-i18n="flow3">Hoot checks</span></div>
+        <span class="flow-arrow" aria-hidden="true">➜</span>
+        <div class="flow-step"><span class="flow-ico">🦊</span><span data-i18n="flow4">Captain Q decides</span></div>
+        <span class="flow-arrow" aria-hidden="true">➜</span>
+        <div class="flow-step"><span class="flow-ico">🏆</span><span data-i18n="flow5">Answer (majority vote)</span></div>
+      </div>
+
+      <div class="card reward">
+        <h3 data-i18n="rewardTitle">How Captain Q was scored while learning</h3>
+        <div class="reward-grid">
+          <div class="rw good"><b>+1</b><span data-i18n="rwCorrect">right answer</span></div>
+          <div class="rw bad"><b>−1</b><span data-i18n="rwWrong">wrong answer or no answer</span></div>
+          <div class="rw cost"><b>−0.05</b><span data-i18n="rwRegen">each extra try</span></div>
+          <div class="rw cost"><b>−0.03</b><span data-i18n="rwVerify">each double-check</span></div>
+        </div>
+        <p class="muted small" data-i18n="rewardNote">The answer key is used only to score training and evaluation, never while solving your question.</p>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="section">
+      <h2 class="section-title" data-i18n="resTitle">How well does it work?</h2>
+      <p class="section-sub muted" id="resSub" data-i18n="resSub">Real numbers from the full GSM8K test set (1,319 problems the system never trained on).</p>
+      <div class="split-switch" role="group">
+        <button class="seg active" data-split="test" data-i18n="splitFull">Full test (1,319)</button>
+        <button class="seg" data-split="test_small" data-i18n="splitSmall">Small test (200)</button>
+      </div>
+      <div id="resTiles" class="res-tiles"></div>
+      <div class="card">
+        <h3 data-i18n="costTitle">Cost: model calls per problem</h3>
+        <div id="costBars" class="cost-bars"></div>
+      </div>
+      <div class="card takeaways">
+        <h3 data-i18n="takeTitle">What we learned (honestly)</h3>
+        <ul id="takeaways"></ul>
+      </div>
+      <div class="figs">
+        <figure class="fig"><img src="/figures/accuracy_vs_cost_test.png" alt="" loading="lazy"><figcaption data-i18n="fig1">Accuracy vs cost (full test)</figcaption></figure>
+        <figure class="fig"><img src="/figures/actions_test.png" alt="" loading="lazy"><figcaption data-i18n="fig2">Which moves each system made</figcaption></figure>
+        <figure class="fig"><img src="/figures/learning_curves.png" alt="" loading="lazy"><figcaption data-i18n="fig3">Captain Q learning over time</figcaption></figure>
+        <figure class="fig"><img src="/figures/policy_qvalues.png" alt="" loading="lazy"><figcaption data-i18n="fig4">Captain Q's scores (Q-values) in common situations</figcaption></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer">University project · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · runs locally on your GPU</p>
+  </footer>
+
+  <script src="vendor/katex/katex.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="mascots.js"></script>
+  <script src="background.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

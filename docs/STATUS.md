@@ -18,10 +18,11 @@
 | XAI: Q-values, action mask, visit counts, template explanations, documented fallback | ✅ | `decisions` field in every log record |
 | `solve_problem(question, method, budget, seed)` API | ✅ tested live | `src/pipeline.py` |
 | Command-line interface | ✅ tested live | `scripts/solve.py` |
-| Tests | ✅ 107 passed | `tests/`. **All use mock data** or the data files, **so they are not evidence of Qwen's quality** |
+| Tests | ✅ 122 passed | `tests/`. **All use mock data** or the data files, **so they are not evidence of Qwen's quality** |
 | Notebook `RL.ipynb` | ✅ runs end to end with no errors | shows results, figures and one live question |
 | Project report and README | ✅ | `docs/PROJECT_REPORT.md`, `README.md` |
 | Pre-web verification pass | ✅ | see below |
+| Local web app (EN/AR, steps, KaTeX formulas, fruit visuals, XAI decisions, results page) | ✅ tested live on the GPU | `web/`, `scripts/run_web.py`, `tests/test_web_server.py` (15 tests, demo solver) |
 
 ## Pre-web verification (2026-11-17)
 
@@ -44,7 +45,6 @@
 
 ## Not done / known limitations
 
-- **Web UI or HTTP API:** not built yet; it is the next phase.
 - **Repeating attempt generation with more than one seed:** not done; there was a single generation run. The reported variance covers coordinator training only.
 - **DQN:** not used, because the tabular state (144 visited states) is enough. The current problem is instability, not state size.
 - **Training the Solver itself:** not done; Qwen's weights stay frozen by design.
@@ -52,12 +52,9 @@
 - **Possible exposure of Qwen to GSM8K during pre-training:** cannot be verified. The evaluation does not prove generalization to completely new problems.
 - **Live latency depends on power mode:** about 4–7 s per attempt on AC power, 8–20 s on battery (Balanced mode).
 
-## Readiness for the web phase
+## Web app
 
-- `solve_problem()` returns a JSON-serializable dict with the answer, actions, explanations, usage and latency.
-- The model is loaded once per process.
-- Still needed:
-  - an HTTP layer (e.g. FastAPI);
-  - a queue for GPU requests;
-  - timeout handling and a visible loading state;
-  - a clear "no answer" display.
+- `scripts/run_web.py` serves the page at http://127.0.0.1:8000 (local only). The model loads in the background (about 15 s).
+- One GPU request at a time (a second one gets HTTP 429), 5-minute client timeout, loading animation with a timer, clear "no answer" display.
+- Standard-library server instead of FastAPI: Smart App Control on this machine has blocked new native wheels before, and FastAPI depends on one (pydantic-core).
+- Not deployed to the internet: the model needs the local GPU.
