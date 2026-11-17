@@ -1,0 +1,7 @@
+# CPU runtime for the Hugging Face Space (torch CPU wheel is installed separately in the Dockerfile).
+numpy==2.2.6
+transformers==5.23.0
+tokenizers==0.23.3
+safetensors==0.8.0
+huggingface_hub==2.4.0
+Jinja2==3.1.6

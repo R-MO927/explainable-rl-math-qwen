@@ -22,6 +22,7 @@
       budgetLabel: "Max tries for Robo",
       solveBtn: "Solve it!", solving: "Solving…",
       speedNote: "Each try takes about 5–20 seconds on this laptop (slower on battery).",
+      speedNoteCpu: "Running on a free server without a graphics card: each try can take 20–60 seconds. If someone else is solving, you wait in line.",
       loading1: "The team is working on it…", loading2: "Robo is writing step by step…", loading3: "Hoot is checking the calculations…", loading4: "Captain Q is thinking about the next move…",
       elapsed: "Elapsed",
       errTitle: "Oops!",
@@ -87,7 +88,7 @@
       take4: "Learning was unstable: 5 training runs with the same settings scored between {lo}% and {hi}%.",
       take5: "Qwen may have seen GSM8K problems during its own training, so these numbers may not carry over to brand-new problems.",
       fig1: "Accuracy vs cost (full test)", fig2: "Which moves each system made", fig3: "Captain Q learning over time", fig4: "Captain Q's scores (Q-values) in common situations",
-      footer: "University project · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · runs locally on your GPU",
+      footer: "University project · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · Qwen2.5-0.5B-Instruct (Apache-2.0) · GSM8K (MIT)",
     },
     ar: {
       brand: "رفاق الرياضيات", brandSub: "فريق رياضيات بالتعلّم المعزّز وقابل للتفسير", soundOn: "الصوت شغّال (دوس للكتم)", soundOff: "الصوت مكتوم (دوس للتشغيل)",
@@ -110,6 +111,7 @@
       budgetLabel: "أقصى عدد محاولات لروبو",
       solveBtn: "حلّها!", solving: "بنحلّ…",
       speedNote: "كل محاولة بتاخد حوالي 5–20 ثانية على اللابتوب ده (أبطأ على البطارية).",
+      speedNoteCpu: "شغّال على سيرفر مجاني من غير كارت شاشة: كل محاولة ممكن تاخد 20–60 ثانية. ولو حد تاني بيحل، بتستنى دورك.",
       loading1: "الفريق شغّال على المسألة…", loading2: "روبو بيكتب الحل خطوة بخطوة…", loading3: "هووت بيراجع الحسابات…", loading4: "كابتن Q بيفكر في الخطوة الجاية…",
       elapsed: "الوقت",
       errTitle: "أوبس!",
@@ -175,7 +177,7 @@
       take4: "التعلّم ما كانش مستقر: 5 تدريبات بنفس الإعدادات جابت بين {lo}% و{hi}%.",
       take5: "ممكن Qwen يكون شاف مسائل GSM8K في تدريبه الأصلي، فالأرقام دي ممكن ما تنطبقش بالظبط على مسائل جديدة تمامًا.",
       fig1: "الدقة مقابل التكلفة (الاختبار الكامل)", fig2: "الخطوات اللي عملها كل نظام", fig3: "كابتن Q وهو بيتعلّم", fig4: "درجات كابتن Q (قيم Q) في المواقف المتكررة",
-      footer: "مشروع جامعي · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · بيشتغل على جهازك",
+      footer: "مشروع جامعي · Explainable Multi-Agent RL for Mathematical Reasoning Using Qwen-0.5B · Qwen2.5-0.5B-Instruct (Apache-2.0) · GSM8K (MIT)",
     },
   };
 

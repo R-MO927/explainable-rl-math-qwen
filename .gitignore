@@ -16,3 +16,6 @@ __pycache__/
 Thumbs.db
 .DS_Store
 .vscode/
+
+# Assembled Hugging Face Space folder (scripts/build_hf_space.py)
+build/

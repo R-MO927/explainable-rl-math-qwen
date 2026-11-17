@@ -10,13 +10,14 @@ Endpoints
     GET  /api/results         real metrics read from results/eval/*/metrics.json (nothing recomputed)
     GET  /figures/<name>.png  figures from results/figures (whitelisted names only)
 
-Binds to 127.0.0.1 only. One GPU request runs at a time; a second request waits
+Binds to 127.0.0.1 by default (0.0.0.0 only inside the Space container). One GPU request runs at a time; a second request waits
 up to BUSY_WAIT_S and then gets HTTP 429.
 """
 from __future__ import annotations
 
 import json
 import mimetypes
+import os
 import threading
 import time
 import traceback
@@ -35,7 +36,7 @@ EVAL = ROOT / "results" / "eval"
 WEB_METHODS = ("single", "fixed", "rl", "max_budget")
 MAX_QUESTION_CHARS = 1000
 MAX_BODY_BYTES = 16_000
-BUSY_WAIT_S = 2.0
+BUSY_WAIT_S = float(os.environ.get("MM_BUSY_WAIT_S", "2"))   # public Space: wait in line instead of 429
 FIGURE_NAMES = {"accuracy_vs_cost_test.png", "accuracy_vs_cost_test_small.png", "actions_test.png",
                 "actions_test_small.png", "learning_curves.png", "policy_qvalues.png"}
 RESULT_KEYS = ("A_single_attempt", "B_fixed_rule", "C_rl", "ref_max_budget")

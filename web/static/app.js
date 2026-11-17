@@ -85,6 +85,8 @@
       pill.title = health.model ? `${health.model.model_id || ""} ${health.model.device || ""}` : "";
     } else { pill.classList.add("pill-error"); txt.textContent = health.status === "offline" ? t("err_network") : t("modelError"); pill.title = health.error || ""; }
     $("#demoBanner").hidden = !(health && health.demo);
+    const sn = $("#speedNote");
+    if (health && health.model && health.model.device === "cpu" && !health.demo) { sn.dataset.i18n = "speedNoteCpu"; sn.textContent = t("speedNoteCpu"); }
     $("#solveBtn").disabled = busy || !health || health.status !== "ready";
   }
 

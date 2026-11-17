@@ -40,7 +40,9 @@ class QwenSolver:
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         self.torch = torch
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        import os
+        # MM_DEVICE=cpu forces CPU (used by the CPU-only Hugging Face Space and for speed tests)
+        self.device = device or os.environ.get("MM_DEVICE") or ("cuda" if torch.cuda.is_available() else "cpu")
         torch_dtype = getattr(torch, dtype) if self.device == "cuda" else torch.float32
         self.tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, revision=MODEL_REVISION, padding_side="left")
         self.model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=MODEL_REVISION, dtype=torch_dtype)
