@@ -32,7 +32,7 @@ Paired differences:
 - C − A: +2.1 points, CI [+1.3, +3.0].
 - C − B: −4.5 points, CI [−6.1, −2.9].
 
-The RL coordinator learned a *cheap* policy: it accepts the first attempt 82% of the time and always regenerates after an arithmetic error or a missing answer. It does **not** beat the fixed rule on accuracy, and training is unstable across seeds. See `docs/PROJECT_REPORT_AR.md` §7.
+The RL coordinator learned a *cheap* policy: it accepts the first attempt 82% of the time and always regenerates after an arithmetic error or a missing answer. It does **not** beat the fixed rule on accuracy, and training is unstable across seeds. See `docs/PROJECT_REPORT.md` §7.
 
 ## Setup (Windows, tested)
 
@@ -91,8 +91,8 @@ scripts/                     CLI entry points (see above)
 artifacts/cache/             cached generations (keyed by question/model/prompt/decoding/seed)
 artifacts/policies/          trained Q-tables (JSON)
 results/                     logs, metrics (CSV/JSON), figures
-docs/                        Arabic reports
+docs/                        project, data and status reports
 ```
 
-Full write-up (Arabic): `docs/PROJECT_REPORT_AR.md`. Data report: `docs/DATA_REPORT_AR.md`.
-Status of what is and is not done: `docs/STATUS_AR.md`.
+Full write-up: `docs/PROJECT_REPORT.md`. Data report: `docs/DATA_REPORT.md`.
+Status of what is and is not done: `docs/STATUS.md`.
