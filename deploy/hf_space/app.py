@@ -25,7 +25,7 @@ def gpu_solve(question, method="rl", budget=4, seed=0, solver=None):
 
 def zerogpu_ready():
     """ZeroGPU normally runs its startup step when Gradio's server starts. This app serves the page
-    with its own small HTTP server, so it runs the same step itself (spaces==0.52.1 lifecycle API):
+    with its own small HTTP server, so it runs the same step itself (spaces.zero.lifecycle API, read from spaces 0.52.1):
     it registers the @spaces.GPU function and packs the loaded weights for the GPU workers."""
     try:
         from spaces.zero.lifecycle import zerogpu_mode_enabled, zerogpu_startup
