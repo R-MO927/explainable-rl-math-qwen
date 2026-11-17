@@ -273,7 +273,7 @@ input[type=range] { flex: 1; min-width: 180px; accent-color: var(--sun); }
   flex: none; width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; color: #1b1546;
   background: linear-gradient(135deg, var(--sky), var(--grape));
 }
-.step-body { min-width: 0; overflow-x: auto; font-size: 1.05rem; }
+.step-body { min-width: 0; overflow-x: auto; overflow-y: hidden; padding-block: 3px; font-size: 1.05rem; }
 .final-step { border-color: rgba(255, 209, 102, 0.55); background: linear-gradient(135deg, #3a2a6e, var(--card-2)); }
 .final-step .step-num { background: linear-gradient(135deg, var(--sun), var(--orange)); }
 .katex { font-size: 1.08em; }
@@ -358,7 +358,7 @@ input[type=range] { flex: 1; min-width: 180px; accent-color: var(--sun); }
 .try-kind { font-size: 0.8rem; color: var(--faint); }
 .try-ans b { color: var(--sun); }
 .try-head .toggle { margin-inline-start: auto; }
-.try-text { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); text-align: left; overflow-x: auto; }
+.try-text { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); text-align: left; overflow-x: auto; overflow-y: hidden; }
 .pot { margin-top: 16px; border: 1px solid rgba(179, 136, 255, 0.45); border-radius: 18px; padding: 14px; background: rgba(179, 136, 255, 0.07); }
 .pot-head { display: flex; align-items: center; gap: 10px; }
 .pot-head .mascot-svg { width: 52px; }

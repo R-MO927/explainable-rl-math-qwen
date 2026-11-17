@@ -163,7 +163,10 @@
     const answered = r.attempt_answers.filter((a) => a !== null);
     const agree = has ? r.attempt_answers.filter((a) => a === r.final_answer).length : 0;
     const badges = [];
-    if (!has) badges.push(`<span class="badge bad">${esc(t("noAnswerExplain"))}</span>`);
+    if (!has) {
+      const words = nonNumericBoxed(r.attempt_texts);
+      badges.push(`<span class="badge bad">${esc(words ? t("noAnswerWords", { w: words }) : t("noAnswerExplain"))}</span>`);
+    }
     if (has && r.attempt_answers.length > 1) badges.push(`<span class="badge">🗳️ ${esc(t("badgeVote", { k: agree, n: r.attempt_answers.length }))}</span>`);
     const pot = r.verifier_outputs && r.verifier_outputs.pot;
     if (has && pot && pot.pot_answer != null) badges.push(pot.pot_answer === r.final_answer
@@ -182,6 +185,18 @@
       ["⏱️", Number(wall).toFixed(1), t("usageTime")], ["✍️", u.output_tokens, t("usageTokens")],
     ].map(([i, v, l]) => `<div class="u"><span class="u-ico">${i}</span><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("");
     $(".answer-card").classList.toggle("is-empty", !has);
+  }
+
+  // What Robo put in the box when it was not a number (e.g. "Paris"), for an honest message.
+  function nonNumericBoxed(texts) {
+    for (let i = texts.length - 1; i >= 0; i--) {
+      const all = [...texts[i].matchAll(/\\boxed\{((?:[^{}]|\{[^{}]*\})*)\}/g)];
+      if (all.length) {
+        const raw = all[all.length - 1][1].replace(/\\text\{([^{}]*)\}/g, "$1").replace(/\\[a-zA-Z]+/g, "").replace(/[{}]/g, "").trim();
+        if (raw && !/\d/.test(raw)) return raw.slice(0, 40);
+      }
+    }
+    return null;
   }
 
   function burst() {
@@ -205,7 +220,7 @@
     const i = r.display.shown_attempt;
     const ol = $("#steps");
     if (i == null) { ol.innerHTML = ""; $("#stepsFrom").textContent = t("noAnswerExplain"); return; }
-    $("#stepsFrom").textContent = t("stepsFrom", { n: i + 1 });
+    $("#stepsFrom").textContent = r.final_answer == null ? t("stepsFromNoAns", { n: i + 1 }) : t("stepsFrom", { n: i + 1 });
     const parts = splitSteps(r.attempt_texts[i]);
     ol.innerHTML = parts.map((p, k) => {
       const fin = /\\boxed/.test(p);
