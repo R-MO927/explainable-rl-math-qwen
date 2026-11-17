@@ -25,15 +25,24 @@ def gpu_solve(question, method="rl", budget=4, seed=0, solver=None):
 
 def zerogpu_ready():
     """ZeroGPU normally runs its startup step when Gradio's server starts. This app serves the page
-    with its own small HTTP server, so it runs the same step itself (spaces.zero.lifecycle API, read from spaces 0.52.1):
-    it registers the @spaces.GPU function and packs the loaded weights for the GPU workers."""
+    with its own small HTTP server, so it runs the same step itself: it registers the @spaces.GPU
+    function and packs the loaded weights for the GPU workers. Works with old and new `spaces`
+    versions (`spaces.zero.startup` / `spaces.zero.zerogpu_startup`)."""
+    from importlib import metadata
     try:
-        from spaces.zero.lifecycle import zerogpu_mode_enabled, zerogpu_startup
-    except ImportError:          # local runs without the real `spaces` package
+        version = metadata.version("spaces")
+    except metadata.PackageNotFoundError:
+        version = "not installed"
+    on_zero = os.environ.get("SPACES_ZERO_GPU", "").lower() in ("1", "true", "yes")
+    print(f"spaces {version}; SPACES_ZERO_GPU={on_zero}", flush=True)
+    if not on_zero:
         return
-    if zerogpu_mode_enabled():
-        zerogpu_startup()
-        print("ZeroGPU startup done", flush=True)
+    import spaces.zero as zero
+    start = getattr(zero, "zerogpu_startup", None) or getattr(zero, "startup", None)
+    if start is None:
+        raise RuntimeError(f"spaces {version}: no ZeroGPU startup function found")
+    start()
+    print("ZeroGPU startup done", flush=True)
 
 
 if __name__ == "__main__":
